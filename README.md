@@ -10,3 +10,11 @@ Right now, I am researching frameworks/libraries for drawing using React. Here a
 
 WebGL feels very cool and powerful. But I think it would be too much to try at once. 
 
+To be honest, I am not sure that I should try to make this website. I am not sure that I am good enough. Perhaps I should rebeuild the chatApp website first to enhance my udnerstanding of React, Express, mongoDB and websockets. Or maybe I am just too cowardly? 
+
+I read some reddit. People say that starting projects you don't know how to do is a good practice that increases the speed of learning. That is why I will at least try making this website. 
+
+I might also use threeJS. Reddit guys say it might work for 2D animations quite well too. 
+
+I stumbled upon a "canvas and HMTL 5" tutorial on youtube. I am going to check it. I created a folder learningCanvas for it.
+
