@@ -82,3 +82,9 @@ I don't know how he does it. I can't send any notifications with the debug conso
 
 I found a thirty minute tutorial for socket io. It has both a backend and a frontend package for bidirectional communication.
 
+The essence of socket.io is in listening to or emitting events. You can send data with an event. 
+
+To emit and listen to events on the client, you need to install socket.io-client npm package. 
+
+You can define event listeners for a particular/custom event within the 'connection' event listener: that way every socket is set up. 
+
