@@ -40,3 +40,45 @@ Usecases of web sockets are: chatting, live feed, multiplayer gaming, showing cl
 
 WebSocket is available on many browsers by default. To get a good understanding of web sockets, we will set up a socket-only server. And the client will be us sending stuff through the browser's console. 
 
+To test the application  written for NodeJS, go to the browser console. WebSockets are available on many browsers. So you can write javascript code that uses the WebSocket funcitonality. 
+
+You need to establish a websocket connection with a client: let ws = new WebSocket("ws://localhost:3000")
+
+You also should set up event listeners on the client: ws.onmessage = message => console.log(`Received a message from server: ${message}`)
+
+After that, you can send messages from the server using the debug console in VS code. To get access to it, launch the code using Run > Start Debugging
+
+You then send a message with connection.send()
+
+I got stuck. The connection does not work. The guy in video uses a debugger. So now I am learning how to debug in VS code. 
+
+Debuggers are mostly available in IDE's. 
+
+A debugger is a tool to help you figure out what is going on in your programm.
+
+Intuitively, people have been debugging without a debugging tool just using printing statements. Those printing statements would print values of variables and you would be able to understand the program flow/logic/etc this way. 
+
+To avoid the mess of console.logs, you can use a debugger. In VS code, it shows you stuff like local and global variables in the variables section. 
+
+A breakpoint is a moment/position in your code at which the debugger will 'freeze' and show you the variables/states ad that instant. 
+
+The upper menu bar with different buttons lets you navigate the debugger through your code. 
+
+There are step over, step into, step out. The step over moves the debugger to the next one. 
+
+To access the VS code debugger, navigate to the PlayBug icon on the left vertical panel. You can view your breakpoints. 
+
+Then you press "Run and Debug" and then you select the stuff you want to debug. 
+
+Sections other than Variables are Watch and Callstack. 
+
+Watch allows you to create custom values based on variables accessible to the debugger from the program. For example, you can view element of an array that is not explicitly shown by the debugger by default.
+
+To run the debugger, there must be at least one breakpoint. That is because the debugger does not stop running the program until it sees a breakpoint. 
+
+Step over moves you to the next lie of code. Step into goes deeper into the functions/methods/stuff on the current line. Step out does the opposite by returning you to the function that called the function you are looking at.
+
+I don't know how he does it. I can't send any notifications with the debug console. I think I am going to try another tutorial. I am losing my mind.
+
+I found a thirty minute tutorial for socket io. It has both a backend and a frontend package for bidirectional communication.
+
