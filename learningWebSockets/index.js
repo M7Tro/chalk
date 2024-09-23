@@ -1,5 +1,7 @@
 //Getting the http module
 const http = require('http');
+//global variable for the connection:
+let connection = null;
 //Getting a class from the websocket module:
 const WebSocketServer = require('websocket').server;
 
@@ -14,9 +16,18 @@ const websocket = new WebSocketServer({
 })
 
 //Setting up an event listener:
-websocket.on("request", request => {
-    //Accepting an incoming reuqest:
-    request.accept();
+websocket.on("request", (request) => {
+    connection = request.accept(null, request.origin); //we accept anything so null;
+    //After accepting the request, set up the event listeners:
+    connection.on("onopen", () => {
+        console.log("Opened!!")
+    })
+    connection.on("onclose", () => {
+        console.log("Closed!")
+    })
+    connection.on("onmessage", message => {
+        console.log(`Received message: ${message}`)
+    })
 })
 
 //listening on the server:
