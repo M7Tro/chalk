@@ -42,7 +42,7 @@ io.on("connection", (socket) => {
     //listening for the custom event from the client:
     socket.on("sendMessage", ({message}) => {
         console.log("Message received: ", message);
-        socket.broadcast.emit("messageReceived", (message));
+        socket.broadcast.emit("messageReceived", ('hello'))
     })
 })
 

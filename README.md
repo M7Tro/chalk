@@ -88,3 +88,6 @@ To emit and listen to events on the client, you need to install socket.io-client
 
 You can define event listeners for a particular/custom event within the 'connection' event listener: that way every socket is set up. 
 
+For some reasons, changes that I add to the website do not immediately reflect. Even if it looks like it refreshed, it doesn't work the way it should. 
+
+I have deleted the whole client folder. I will use vite instead.
