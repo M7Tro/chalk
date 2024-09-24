@@ -7,7 +7,15 @@ function App() {
 
   useEffect(()=>{
     setSocket(io.connect("http://localhost:3001"));
+
   },[])
+
+  useEffect(()=>{
+    console.log("Socket: ", socket);
+    socket?.on('messageReceived', (message) => {
+      console.log("Server received a message:", message);
+    })
+  },[socket])
   
   const sendMessage = (e) => {
     e.preventDefault();
