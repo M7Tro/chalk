@@ -40,7 +40,7 @@ io.on("connection", (socket) => {
     console.log("Someone connected:", socket.id);
 
     //listening for the custom event from the client:
-    socket.on("newMessage", ({message}) => {
+    socket.on("sendMessage", ({message}) => {
         console.log("Received a message:", message);
     })
 })
