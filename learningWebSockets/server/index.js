@@ -30,7 +30,7 @@ app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: "http://localhost:5173",
         methods: ["GET", "POST"]
     }
 })
@@ -42,7 +42,7 @@ io.on("connection", (socket) => {
     //listening for the custom event from the client:
     socket.on("sendMessage", ({message}) => {
         console.log("Message received: ", message);
-        socket.broadcast.emit("messageReceived", ('hello'))
+        socket.broadcast.emit("messageReceived", ({message, socketId: socket.id}))
     })
 })
 

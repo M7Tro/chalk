@@ -10,9 +10,11 @@ function App() {
     setSocket(io.connect("http://localhost:3001"));
   },[])
   useEffect(() => {
-    socket?.on("messageReceived", () => {
-      console.log("Message was received by the server");
-    })
+    if(socket){
+      socket.on("messageReceived", () => {
+        console(`Message was received by the server`);
+      })      
+    }
   },[socket])
 
   const sendMessage = () => {

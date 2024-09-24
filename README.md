@@ -91,3 +91,20 @@ You can define event listeners for a particular/custom event within the 'connect
 For some reasons, changes that I add to the website do not immediately reflect. Even if it looks like it refreshed, it doesn't work the way it should. 
 
 I have deleted the whole client folder. I will use vite instead.
+
+I had to change the address of the cors origin to localhost:5173. 
+
+I am not able to send the message to the server from client. 
+
+For some reason, I got the same problems. Nothing happened when I tried to receive the messageREceived event. 
+
+The updates of the code are not immediately reflected. What the f?
+
+Whatver. I more or less understand how socket.io works now.
+
+WHen it comes to emitting events from client, we can only do it to the backend. So if we want to send something to other user, we will have to rely on the server as a layer. 
+
+You can use socket.join(data) to join a certain room with id of {data}. That way you can isolate communication/exchange between certain users. You can make the backend listen for some custom event triggered by a click of button and then join the socket into the room. 
+
+To later send the message to someone in the room, the frontend emits the event with a room data that contains the id/address of the room. And the server, instead of using broadcast, uses socket.to(data.room).emit(...)
+
