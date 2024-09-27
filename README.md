@@ -116,3 +116,7 @@ But then I couldn't center it vertically.
 
 So I just used absolute positioning with transform: traslateY("-50%") for vertical alignment
 
+You draw in canvas using reactangles and paths (collections of dots).
+
+I use getBoundingClientRect() to calculate the cursor position on the canvas. 
+
