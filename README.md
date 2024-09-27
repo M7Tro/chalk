@@ -108,3 +108,11 @@ You can use socket.join(data) to join a certain room with id of {data}. That way
 
 To later send the message to someone in the room, the frontend emits the event with a room data that contains the id/address of the room. And the server, instead of using broadcast, uses socket.to(data.room).emit(...)
 
+I started doing the frontend. Lets see how it goes.
+
+I was fruitlessly trying to center tha canvas tag with margins until chatGPT told me that it won't work on inline-block element unless I change it to block.
+
+But then I couldn't center it vertically. 
+
+So I just used absolute positioning with transform: traslateY("-50%") for vertical alignment
+
