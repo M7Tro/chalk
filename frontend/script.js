@@ -1,6 +1,7 @@
 const color = document.querySelector('.color');
 const lineWidth = document.querySelector('.lineWidth');
 lineWidth.value = 1; //we want 1 to be displayed by default
+const clearButton = document.querySelector('.clear');
 
 const canvas = document.querySelector(".chalkboard");
 let context;
@@ -46,11 +47,17 @@ canvas.addEventListener("mouseup", (e) => {
     context.closePath();
 })
 
-//Changing color and line width with user input:
+//Changing color abd line width with user input:
 color.addEventListener("change", (e) => {
     context.strokeStyle = e.target.value;
 })
 
 lineWidth.addEventListener("change", (e) => {
     context.lineWidth = e.target.value;
+})
+
+//Clear button:
+clearButton.addEventListener('click', () => {
+    context.fillStyle = "white";
+    context.fillRect(0, 0, canvas.width, canvas.height);
 })

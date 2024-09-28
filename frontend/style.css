@@ -18,6 +18,8 @@ body{
 .input * {
     width: 100%;
     font-size: 2rem;
+
+    margin-bottom: 10px;
 }
 
 .chalkboard{

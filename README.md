@@ -132,3 +132,4 @@ And now it works. I added event listeners. You can draw!
 
 Next step is to enable change of coler and linewidth by the user. First, I will set up event listeners for input fields.
 
+Next thing would be to add a "clear" button. 
