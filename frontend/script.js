@@ -1,47 +1,27 @@
-//Once the window is loaded, we set up the context for canvas:
+const canvas = document.querySelector(".chalkboard");
 let context;
-let canvasWidth;
-let canvasHeight;
 
-let mouseIsDown = false;
 let canvasX;
 let canvasY;
 
-const canvas = document.querySelector(".chalkboard");
+window.addEventListener("load", () =>{
+    context = canvas.getContext("2d");
 
-window.addEventListener("load", () => {
-    if(canvas.getContext){
-        context = canvas.getContext("2d");
-        canvasWidth = canvas.width;
-        canvasHeight = canvas.height;
-        context.clearRect(0, 0, canvasWidth, canvasHeight);
+    let rect = canvas.getBoundingClientRect();
+    canvas.setAttribute("width", rect.width);
+    canvas.setAttribute("height", rect.height);
+
+    if(context){
+        context.beginPath();
+        context.moveTo(50, 50);
+        context.lineTo(100, 100);
+        context.stroke();
     }
 })
 
-canvas.addEventListener("mousedown", (e) => {
+canvas.addEventListener('click', (e) =>{
     e.preventDefault();
-
-    mouseIsDown = true;
-    canvasX = e.clientX - canvas.getBoundingClientRect().left;
-    canvasY = e.clientY - canvas.getBoundingClientRect().top;
-
-    context.beginPath();
-    context.moveTo(canvasX, canvasY);
-})
-canvas.addEventListener("mousemove", (e) => {
-    e.preventDefault();
-
-    if(mouseIsDown){
-        canvasX = e.clientX - canvas.getBoundingClientRect().left;
-        canvasY = e.clientY - canvas.getBoundingClientRect().top;
-        
-        context.lineTo(canvasX, canvasY);
-        context.stroke();    
-    }   
-
-})
-canvas.addEventListener("mouseup", (e) => {
-    e.preventDefault();
-
-    mouseIsDown = false;
+    canvasX = e.clientX - canvas.getBoundingClientRect().x;
+    canvasY = e.clientY - canvas.getBoundingClientRect().y;
+    console.log(canvasX, canvasY);
 })

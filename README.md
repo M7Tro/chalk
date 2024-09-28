@@ -120,3 +120,11 @@ You draw in canvas using reactangles and paths (collections of dots).
 
 I use getBoundingClientRect() to calculate the cursor position on the canvas. 
 
+I deleted the whole script.js code. I tried to rewrite everything. I noticed that while I get correct coordinates,  they are not displayed correctly on canvas. There is a varying offset.
+
+After reading some stackOverflow, I found that people have a problem of the canvas tag being stretched when its width and height are specified with css properties instead of tag attrbiutes width and height. 
+
+In order to set the width and height of the canvas element dynamically, I retrieve the width and height with getBoundingClientRect() and set the width and height with canvas.setAttribute("width", ...);
+
+Amazing! I fixed it! I am a genius!
+
