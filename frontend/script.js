@@ -1,3 +1,7 @@
+const color = document.querySelector('.color');
+const lineWidth = document.querySelector('.lineWidth');
+lineWidth.value = 1; //we want 1 to be displayed by default
+
 const canvas = document.querySelector(".chalkboard");
 let context;
 
@@ -6,6 +10,7 @@ let canvasY;
 
 let mousedown = false;
 
+//Initial setup of the canvas on load:
 window.addEventListener("load", () =>{
     context = canvas.getContext("2d");
 
@@ -15,6 +20,7 @@ window.addEventListener("load", () =>{
     canvas.setAttribute("height", rect.height);
 })
 
+//Drawing functionality:
 canvas.addEventListener("mousedown", (e) => {
     mousedown = true;
 
@@ -38,4 +44,13 @@ canvas.addEventListener("mousemove", (e) => {
 canvas.addEventListener("mouseup", (e) => {
     mousedown = false;
     context.closePath();
+})
+
+//Changing color and line width with user input:
+color.addEventListener("change", (e) => {
+    context.strokeStyle = e.target.value;
+})
+
+lineWidth.addEventListener("change", (e) => {
+    context.lineWidth = e.target.value;
 })

@@ -128,3 +128,7 @@ In order to set the width and height of the canvas element dynamically, I retrie
 
 Amazing! I fixed it! I am a genius!
 
+And now it works. I added event listeners. You can draw!
+
+Next step is to enable change of coler and linewidth by the user. First, I will set up event listeners for input fields.
+
