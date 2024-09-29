@@ -1,3 +1,6 @@
+const saveButton = document.querySelector(".save");
+let img = new Image(); //Global image variable;
+
 const color = document.querySelector('.color');
 const lineWidth = document.querySelector('.lineWidth');
 lineWidth.value = 1; //we want 1 to be displayed by default
@@ -60,4 +63,9 @@ lineWidth.addEventListener("change", (e) => {
 clearButton.addEventListener('click', () => {
     context.fillStyle = "white";
     context.fillRect(0, 0, canvas.width, canvas.height);
+})
+
+//The 'save' button:
+saveButton.addEventListener("click", () => {
+    console.log("Save button clicked");
 })

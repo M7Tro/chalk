@@ -133,3 +133,25 @@ And now it works. I added event listeners. You can draw!
 Next step is to enable change of coler and linewidth by the user. First, I will set up event listeners for input fields.
 
 Next thing would be to add a "clear" button. 
+
+I guess the next thing is to build a backend that will be able to store the drawing on the canvas in the database. How do I do that?
+
+Canvas lets you work with images. You can create an HTMLImageElement with the Image() constructor: const img = new Image(); img.src = ...;
+
+You should add a 'load' event listener to the img object (or use .onload = () => {...}) When the image is loaded and available, you use context.drawImage(img, 0,0, width, height); Width and height let you scale the image onto canvas. 
+
+I was able to insert and draw on an image on the canvas tag. Nice. Next step is to save the drawing on the canvas as an image. 
+
+First, I will implement a 'save' button. toDataURL() saves in png by default. If you output the saved dataURL into console, you will see a bunch of base64 code. 
+
+
+I think that the next step would actually be to set up the backend. 
+
+We will authenticate the user. And when a user comes in, a session with JWT token is created. The login and password are stored in the database (password hashed). And for each user, there will be a drawing stored.
+
+Alright. Now is the late evening of a Sunday. I haven't made any commits yet. Must fix that.
+
+Next step for my app is to buld a backend that lets a user to log in. I think that the very first/basic version of the website that I must implement lets a user log in and see the drawing he/she saved.
+
+I will set the backend up similarly to what I have done in the tutorials before. The npm packages insdide node_modules and package.json will be installed in the root directory and the server.js will be launched from the root directory. 
+
