@@ -2,20 +2,26 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
+//Routers:
+const authRouter = require("./routers/authRouter.js");
+
 const app = express();
-dotenv.config();//To be able to use the .env file
+dotenv.config();//To be able to use the .env fil
 
-//middleware: outputting requests, parsing json, 
-app.use((req, res, next) => {
-    console.log("Received request:". req.method, req.path);
-    next();
-})
-
-app.use(express.json());
-
-//Launcing the server once we are connected to the database:
+//Launch the server on connection to the database:
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         const PORT = process.env.PORT || 3000;
-        app.listen(PORT, () => {console.log("Listing on port", PORT)});
+        app.listen(PORT, () => {console.log("Seerver launched on port", PORT)});
     })
+
+//middleware: outputting requests, parsing json, 
+app.use((req, res, next) => {
+    console.log("Received request:", req.method, req.path);
+    next();
+})
+app.use(express.json());
+
+
+//Implementing API endpoints:
+app.use("/api/auth", authRouter);
