@@ -1,19 +1,15 @@
 const {Router} = require("express");
 const router = Router();
 
+const userController = require('../controllers/userController.js');
+
 //For signing up:
-router.post("/signup", (req, res) => {
-    res.send("signup");
-})
+router.post("/signup",  userController.signupUser);
 
 //For loging in:
-router.post("/login", (req, res) => {
-    res.send("login");
-})
+router.post("/login", userController.loginUser);
 
 //For loging out:
-router.post("/logout", (req, res) => {
-    res.send("logout");
-})
+router.post("/logout", userController.logoutUser);
 
 module.exports = router;
