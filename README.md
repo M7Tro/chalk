@@ -180,3 +180,7 @@ Next step is to add middleware that checks the jwt cookie file and does not let 
 I made a silly mistake by passing my custom middleware with () into app.use. I thought it was correct because that is how I did it with cookieParser(). But I guess I did not consider that it also returns a function. 
 
 On successfuly JWT validation, I will attach the decoded userId to the res.locals.userId.
+
+After adding the JWT-verifying middleware, next step is to implement the logout endpoint. 
+
+The idea is simply that we delete the JWT cookie from the browser's storage.

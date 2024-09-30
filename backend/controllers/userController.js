@@ -28,7 +28,8 @@ const loginUser = async (req, res) => {
     }
 }
 const logoutUser = (req, res) => {
-    res.status(200).send("logout");
+    res.cookie("jwt", "", {maxAge: 1, httpOnly: true});
+    res.status(200).json({message: "JWT cookie deleted"});
 }
 
 module.exports = {
