@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
+const authMiddleware = require('./middleware/authMiddleware.js');
 
 //Routers:
 const authRouter = require("./routers/authRouter.js");
@@ -26,4 +27,5 @@ app.use(cookieParser());
 
 
 //Implementing API endpoints:
+app.use(authMiddleware);
 app.use("/api/auth", authRouter);

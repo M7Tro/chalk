@@ -173,3 +173,10 @@ I read some documentation on cookie-parser. The way it works is we use the middl
 
 But that is for reading/accessing cookies from the incoming request. To set a cookie, just use res.cookie(name, value, [, options]) from express. I will use httpOnly and maxAge to create the cookie. 
 
+I added cookie creation on signup.
+
+Next step is to add middleware that checks the jwt cookie file and does not let you pass unless you have a valid token. Note that the middleware should be added after the authRouter: user does not need to have a valid token to login or signup. But the middleware should be before the router for stuff like drawing/saving/etc. Those pages are only accessible to those with tokens. 
+
+I made a silly mistake by passing my custom middleware with () into app.use. I thought it was correct because that is how I did it with cookieParser(). But I guess I did not consider that it also returns a function. 
+
+On successfuly JWT validation, I will attach the decoded userId to the res.locals.userId.
