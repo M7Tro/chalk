@@ -9,8 +9,14 @@ const signupUser = async (req, res) => {
         res.status(400).json({error: err.message});
     }
 }
-const loginUser = (req, res) => {
-    res.status(200).send("login");
+const loginUser = async (req, res) => {
+    try{
+        const {email, password} = req.body;
+        await User.login(email, password);
+        res.status(200).json({message: "You are logged in"});
+    }catch(err){
+        res.status(400).json({error: err.message});
+    }
 }
 const logoutUser = (req, res) => {
     res.status(200).send("logout");

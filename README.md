@@ -155,3 +155,9 @@ Next step for my app is to buld a backend that lets a user to log in. I think th
 
 I will set the backend up similarly to what I have done in the tutorials before. The npm packages insdide node_modules and package.json will be installed in the root directory and the server.js will be launched from the root directory. 
 
+Signup functinoality is ready. The email and a hashed password are saved. 
+
+Next, I will set up login functionality. For this, I will add a static login method to the userSchema that uses provided credentials to verify a user. 
+
+Inside the static method of the userSchema, you can refer to the model and access methods like find() using the keyword "this".
+
