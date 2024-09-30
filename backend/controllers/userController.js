@@ -1,4 +1,5 @@
 const User = require('../models/User.js');
+const jwt  = require("jsonwebtoken");
 
 const signupUser = async (req, res) => {
     try{
@@ -12,7 +13,11 @@ const signupUser = async (req, res) => {
 const loginUser = async (req, res) => {
     try{
         const {email, password} = req.body;
-        await User.login(email, password);
+        const id = await User.login(email, password);
+
+        const token = jwt.sign({id}, process.env.JWT_SECRET,{expiresIn:"1d"});
+        res.cookie("jwt", token, {maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true})
+
         res.status(200).json({message: "You are logged in"});
     }catch(err){
         res.status(400).json({error: err.message});

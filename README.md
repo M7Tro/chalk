@@ -161,3 +161,15 @@ Next, I will set up login functionality. For this, I will add a static login met
 
 Inside the static method of the userSchema, you can refer to the model and access methods like find() using the keyword "this".
 
+I have implemented the login functionality on a basic level. Now I want to create JWT sessions.
+
+I will start with creating a JWT on login. Then I will createa a JWT on sign up. 
+
+How did it work? If your login/signup request is successful, a json web token is created and stored in the cookie labeled "jwt" on your browser. In the future, all the requests you make to the server will include the cookie with them and you will be able to log in the user immediately with some middleware. 
+
+I installed jsonwebtoken and cookie-parser to make it all work. 
+
+I read some documentation on cookie-parser. The way it works is we use the middleware cookieParser() inside app.use(). It parses the data contained in the "Cookie" header of the incoming request and makes it accessible through req.cookies. 
+
+But that is for reading/accessing cookies from the incoming request. To set a cookie, just use res.cookie(name, value, [, options]) from express. I will use httpOnly and maxAge to create the cookie. 
+

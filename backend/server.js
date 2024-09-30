@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
 
 //Routers:
 const authRouter = require("./routers/authRouter.js");
@@ -21,6 +22,7 @@ app.use((req, res, next) => {
     next();
 })
 app.use(express.json());
+app.use(cookieParser());
 
 
 //Implementing API endpoints:
