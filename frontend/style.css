@@ -6,6 +6,22 @@ body{
     height: 100%;
 }
 
+/*index.hmtl*/
+#root{
+    width: 100%;
+    height: 100%;
+}
+
+#root nav{
+    padding: 30px;
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+    font-size: 2rem;
+}
+
+
+/*Canvas*/
 .input{
     position: absolute;
 

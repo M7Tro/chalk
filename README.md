@@ -184,3 +184,30 @@ On successfuly JWT validation, I will attach the decoded userId to the res.local
 After adding the JWT-verifying middleware, next step is to implement the logout endpoint. 
 
 The idea is simply that we delete the JWT cookie from the browser's storage.
+
+What is next? 
+
+I think it is time to connect the frontend and the backend together. For now it simply means launching both server and frontend as separate procesess and start making request from the client. 
+
+Problem is that the closest things I think of implementing are login/signup pages. And I haven't done routing with vanilla js before. Need some time to see how it is done. 
+
+There is a 4 minute tutorial that explains everything. Create a root div. Add a <nav> tag with <a> tags for links inside. And also add a main-page div. 
+
+Create a file router.js. Create a function route() that handles location changes. It will listen for event. const route = (event) => {...}. Prevent the event's default behavior: when user presses the <a> tag to chagne page, we don't want automatic refresh. Then use the browser's history API: window.history.pushState({}, "", event.target.href). This will update the URL on the browser. After that, give global access to the route function: window.route = route
+
+You add the script into the html file with <script> and src. And then you attach the route() function to the click event for the <a> tags: onClick="route()"
+
+After that, clicking on links must update URL's. To actually change the location, create another function in route.js called handleLocation(). Get the path from the current location: const path = window.location.pathname. 
+
+Define some routes for the paths with an object that has paths for keys and HTML files for values. routes = {"/":"/pages/index.html", "/about": "/pages/about.html", "/lorem": "/pages/lorem.html", 404: "/pages/404.html"}. For undefined paths, we have 404. 
+
+Inside handleLocations, we get the file path: const route = routes[path] || routes[404]
+
+Next you need to load in the html: const html = fetch(route).then((data) => data.text()); Fetch response is tranformed to text.
+
+After that, you can assign the html text to the innerhtml of the main-page div: document.getElementById("main-page").innerHTML = html;
+
+Last step is to implement browser routing functionality and first page load.  We simply need to attach handleLocation to popstate event of the window: window.onpopstate = handleLocation. This will handle cases when user presses forward and back buttons. 
+
+Then make a call to handleLocation() at the end of route.js so that it executes on pageload. You also need to call it on every call to the route() function. 
+

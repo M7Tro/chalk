@@ -7,19 +7,16 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="input">
-        <label for="color">Color:</label>
-        <input type="color" name="color" class="color">
-        <label for="lineWidth">Line Width px:</label>
-        <input type="number" name="lineWidth" class="lineWidth">
-        <button class="clear">Clear</button>
-        <button class="save">Save</button>
+    <div id="root">
+        <nav>
+            <a href="/">Chalkboard</a>
+            <a href="/signup">Sign Up</a>
+            <a href="/login">Log In</a>
+        </nav>
+        <div id="mainPage">
+            
+        </div>
     </div>
-
-    <canvas class="chalkboard">
-        Sorry, but the application is not supported in your browser.
-    </canvas>
-
-    <script defer src="./script.js"></script>
+    <script defer src="./route.js"></script>
 </body>
 </html>
