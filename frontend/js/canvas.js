@@ -1,5 +1,4 @@
 const saveButton = document.querySelector(".save");
-let img = new Image(); //Global image variable;
 
 const color = document.querySelector('.color');
 const lineWidth = document.querySelector('.lineWidth');
@@ -14,15 +13,12 @@ let canvasY;
 
 let mousedown = false;
 
-//Initial setup of the canvas on load:
-window.addEventListener("load", () =>{
-    context = canvas.getContext("2d");
-
-    //This is necessary for proper function of the canvas. If width and height are specified only with CSS, canvas will be stretched
-    let rect = canvas.getBoundingClientRect();
-    canvas.setAttribute("width", rect.width);
-    canvas.setAttribute("height", rect.height);
-})
+//Initial setup of the canvas on injection:
+context = canvas.getContext("2d");
+//This is necessary for proper function of the canvas. If width and height are specified only with CSS, canvas will be stretched
+let rect = canvas.getBoundingClientRect();
+canvas.setAttribute("width", rect.width);
+canvas.setAttribute("height", rect.height);
 
 //Drawing functionality:
 canvas.addEventListener("mousedown", (e) => {

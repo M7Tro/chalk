@@ -11,7 +11,8 @@ const routes = {
     "/":{
         template: "/pages/canvas.html",
         title: urlPageTitle,
-        description: "Draw"
+        description: "Draw",
+        script: "../js/canvas.js"
     },
     signup:{
         template: "/pages/signup.html",
@@ -44,6 +45,12 @@ const locationHandler = async () => {
     const route = routes[location] || routes[404];
     const html = await fetch(route.template).then(data => data.text());
     document.querySelector("#mainPage").innerHTML = html;
+    if(route.script){
+        const script = document.createElement('script');
+        script.src = route.script;
+        script.defer = true;
+        document.body.appendChild(script);
+    }
     document.title = route.title;
     document  
         .querySelector('meta[name="description"]')

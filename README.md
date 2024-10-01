@@ -252,3 +252,15 @@ For example, instead of href='/about' we write href='#about'
 
 Unbelievable. It now does not crash on reload. Why?
 
+First, I should note the downside of using so-called "Hash Routing": it is not good for SEO. After all, you have this weird #login, #signup urls.
+
+The core idea of hash routing is to represent the current state of your application with the hash fragment of URl.
+
+It allows you to update the content of the page without triggering a full page refresh.
+
+The reason you don't receive an error on page reload is that the hash fragment is not sent to the server as part of the URL. 
+
+The hash is used solely by the browser to manage the state of the application on the client side. 
+
+When the page is reloaded, the client sends a request without the hash fragment. The hash fragment is NOT a part of the server-side URL: to the server, /#login and /#signup and / look the same and so it server index.html in any case.
+
