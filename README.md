@@ -211,3 +211,28 @@ Last step is to implement browser routing functionality and first page load.  We
 
 Then make a call to handleLocation() at the end of route.js so that it executes on pageload. You also need to call it on every call to the route() function. 
 
+Notice that the .html files inside the pages folder do not need to have the body or head tags. Just pure content. 
+
+
+The routing method suggested by the guy on video uses the browser's history API. Let's see what it is about.
+
+History API provides access to the browser's session history through the history global object. You can use it to naviage back and forth through the user's history and mainpulate the contents o hte history stack. 
+
+Basic methods for navigating across the history stack are: back(), forward(), go().
+
+Example is go(-1). -1 is current page's relative position. 
+
+When the active history changes while the user navigates session history, popstate event is fired. It is fired when the user visits a new page or, as in our imlpementation, when history.pushState() is used.
+
+pushState() and replaceState() accept the following arguments: state, title[, url]
+
+state is an object that can represent the current page. You can pass null if you want, or things like theme.
+
+Middle element, title, is often not used by the browsers so we just pass '' instead.
+
+Url is an optional parameter. If we don't use it, current url will be used in the history array. 
+
+Note that you can't just pass any url you want: you can't go outside of your domain. 
+
+Again, you make the route function globally accessible by attaching it to a property in window: window.route = route. That way, you can attach the event listener to the <a> tags just by writing onClick="route()"
+
