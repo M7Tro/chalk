@@ -27,5 +27,5 @@ app.use(cookieParser());
 
 
 //Implementing API endpoints:
-app.use(authMiddleware);
 app.use("/api/auth", authRouter);
+app.use(authMiddleware);

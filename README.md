@@ -236,3 +236,19 @@ Note that you can't just pass any url you want: you can't go outside of your dom
 
 Again, you make the route function globally accessible by attaching it to a property in window: window.route = route. That way, you can attach the event listener to the <a> tags just by writing onClick="route()"
 
+I had an issue with the router not working on reload. Issue was that when youreload the page on http://localhost:5500/signup, it gives you a 404 not found error. 
+
+I don't really understand why. It might be because I am using the localhost. I should see if the error persits in deployment. Maybe I will just implement SSR later and don't sweat about Vanilla JS SPA.
+
+Developing without proper SPA routing does not work well because on every change the Live Server crashes and I have to restart from the main page.
+
+After doing some research, I found that this issue is common and can be fixed by configuring the index.html as a serving file or something. And it is not posibble for the Live Server. So I guess I will not overcomplicate my learning and make a vite react app.
+
+No. Making a vite up does not let me use Vanilla JS for the drawing on canvas. WHich is even harder to fix tha poor routing. I am goint to restart this folder and pull code from github from my last commit.
+
+I am watching a tutorial that implements vanilla JS routing using # instead of URL routing.
+
+For example, instead of href='/about' we write href='#about'
+
+Unbelievable. It now does not crash on reload. Why?
+
