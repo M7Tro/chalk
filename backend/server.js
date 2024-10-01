@@ -3,6 +3,13 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const authMiddleware = require('./middleware/authMiddleware.js');
+const cors = require('cors');
+
+//CORS config:
+const corsOptions = {
+    origin: "http://localhost:5501",
+    optionsSuccessStatus: 200
+}
 
 //Routers:
 const authRouter = require("./routers/authRouter.js");
@@ -17,15 +24,18 @@ mongoose.connect(process.env.MONGO_URI)
         app.listen(PORT, () => {console.log("Seerver launched on port", PORT)});
     })
 
-//middleware: outputting requests, parsing json, 
+//middleware: outputting requests, parsing json, cors, parsing text
 app.use((req, res, next) => {
     console.log("Received request:", req.method, req.path);
     next();
 })
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
+app.use(express.text());
 
 
 //Implementing API endpoints:
-app.use("/api/auth", authRouter);
+app.use("/api/auth", cors(corsOptions), authRouter);
+
 app.use(authMiddleware);

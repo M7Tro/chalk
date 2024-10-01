@@ -17,7 +17,8 @@ const routes = {
     signup:{
         template: "/pages/signup.html",
         description: "Sign Up",
-        title: "Signup | " + urlPageTitle
+        title: "Signup | " + urlPageTitle,
+        script: "../js/signup.js"
     },
     login:{
         template: "/pages/login.html",
@@ -31,10 +32,6 @@ const urlRoute = (event) => {
     window.history.pushState({}, "", event.target.href);
     locationHandler();
 }
-
-links.forEach(link => {
-    link.addEventListener("click", ()=>{console.log("Clicked")});
-})
 
 const locationHandler = async () => {
     let location = window.location.hash.replace("#", "");

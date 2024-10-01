@@ -3,9 +3,9 @@ const jwt  = require("jsonwebtoken");
 
 const signupUser = async (req, res) => {
     try{
-        const {email, password} = req.body;
-        const newUser = await User.create(req.body); //It must be asynchronous. Otherwise, try-catch block won't work
-
+        const {email, password} = JSON.parse(req.body);
+        console.log(email, password);
+        const newUser = await User.create({email, password}); //It must be asynchronous. Otherwise, try-catch block won't work
         const token = jwt.sign({id: newUser._id}, process.env.JWT_SECRET, {expiresIn: "1d"});
         res.cookie("jwt", token, {maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true});
 

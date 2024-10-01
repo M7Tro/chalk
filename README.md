@@ -264,3 +264,8 @@ The hash is used solely by the browser to manage the state of the application on
 
 When the page is reloaded, the client sends a request without the hash fragment. The hash fragment is NOT a part of the server-side URL: to the server, /#login and /#signup and / look the same and so it server index.html in any case.
 
+Added cors to make sure everything works. Just insert in app.use() with authRouter.
+
+I got some strange thign with an OPTIONS request being sent on sign up fetch. 
+
+It is a cors mechanism by browser. I had to set content-type to text/plan, add a express.text() parser and a JSON.parse inside signup controller to stop receiving the errors. 

@@ -52,3 +52,24 @@ body{
 
     border: 3px solid black;
 }
+
+/*Signup page:*/
+.signup form{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: fit-content;
+    gap: 10px;
+
+    margin: 0 auto;
+
+    font-size: 2rem;
+}
+
+.signup form input{
+    font-size: 2rem;
+}
+
+.signup form button{
+    font-size: 2rem;
+}
