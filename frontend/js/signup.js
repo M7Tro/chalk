@@ -12,6 +12,7 @@ signupForm.addEventListener("submit", async (e) => {
             body: JSON.stringify({email, password})
         })
         const json = await response.json();
+        console.log("Response from serevr:", json);
     }catch(err){
         console.log("Error from server during signup:", err.message);
     }

@@ -23,7 +23,8 @@ const routes = {
     login:{
         template: "/pages/login.html",
         description: "Log In",
-        title: "Login | " + urlPageTitle
+        title: "Login | " + urlPageTitle,
+        script: "../js/login.js"
     }
 } 
 

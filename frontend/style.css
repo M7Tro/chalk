@@ -73,3 +73,24 @@ body{
 .signup form button{
     font-size: 2rem;
 }
+
+/*Log In page:*/
+.login form{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: fit-content;
+    gap: 10px;
+
+    margin: 0 auto;
+
+    font-size: 2rem;
+}
+
+.login form input{
+    font-size: 2rem;
+}
+
+.login form button{
+    font-size: 2rem;
+}
