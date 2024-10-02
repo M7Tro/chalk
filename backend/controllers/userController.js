@@ -9,7 +9,7 @@ const signupUser = async (req, res) => {
         const token = jwt.sign({id: newUser._id}, process.env.JWT_SECRET, {expiresIn: "1d"});
         res.cookie("jwt", token, {maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true});
 
-        res.status(200).json({user: newUser});
+        res.status(200).json({message: "You are signed up"});
     }catch(err){
         res.status(400).json({error: err.message});
     }

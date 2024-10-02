@@ -269,3 +269,6 @@ Added cors to make sure everything works. Just insert in app.use() with authRout
 I got some strange thign with an OPTIONS request being sent on sign up fetch. 
 
 It is a cors mechanism by browser. I had to set content-type to text/plan, add a express.text() parser and a JSON.parse inside signup controller to stop receiving the errors. 
+
+I set up the login page and fixed the cookies problem. I had to add credentials:'include' on fetch requests and also add credentials: true to CORS options on backend. Amazing. 
+

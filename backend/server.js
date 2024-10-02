@@ -8,7 +8,8 @@ const cors = require('cors');
 //CORS config:
 const corsOptions = {
     origin: "http://localhost:5501",
-    optionsSuccessStatus: 200
+    optionsSuccessStatus: 200,
+    credentials: true
 }
 
 //Routers:

@@ -9,7 +9,8 @@ signupForm.addEventListener("submit", async (e) => {
         const response = await fetch("http://localhost:3000/api/auth/signup", {
             method: "POST",
             headers: {"Content-Type":"text/plain"},
-            body: JSON.stringify({email, password})
+            body: JSON.stringify({email, password}),
+            credentials: 'include'
         })
         const json = await response.json();
         console.log("Response from serevr:", json);
