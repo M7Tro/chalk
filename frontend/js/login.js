@@ -13,7 +13,6 @@ loginForm.addEventListener("submit", async (e) => {
             credentials: "include"
         })
         const json = await response.json();
-        console.log("Responce from server:", json);
     }catch(err){
         console.log("Error from server during login:", err.message);
     }

@@ -272,3 +272,9 @@ It is a cors mechanism by browser. I had to set content-type to text/plan, add a
 
 I set up the login page and fixed the cookies problem. I had to add credentials:'include' on fetch requests and also add credentials: true to CORS options on backend. Amazing. 
 
+Next step is to make sure that routing is done automatically. If you are logged in and have a session cookie, you are on the canvas page. If not, you can navigate between signup and login until you authenticate yourself.
+
+I had problems with acessing the cookies. I did not realized that you can't access them when httpOnly is set to true. 
+
+And then I realized that I don't really need them. I will simply send a request that automatically attaches the cookies and stores credentials in the local storage. This way, only if you have relevant data in local storage will you be able to access everything. 
+

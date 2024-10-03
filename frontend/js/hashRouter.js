@@ -28,12 +28,6 @@ const routes = {
     }
 } 
 
-const urlRoute = (event) => {
-    event.preventDefault();
-    window.history.pushState({}, "", event.target.href);
-    locationHandler();
-}
-
 const locationHandler = async () => {
     let location = window.location.hash.replace("#", "");
     if(location.length == 0){
