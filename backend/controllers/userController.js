@@ -32,8 +32,13 @@ const logoutUser = (req, res) => {
     res.status(200).json({message: "JWT cookie deleted"});
 }
 
+const cookie = async (req, res) => {
+    res.status(200).json({message: "cookie endpoint reached"});
+}
+
 module.exports = {
     signupUser,
     loginUser,
-    logoutUser
+    logoutUser,
+    cookie
 }

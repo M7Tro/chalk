@@ -12,4 +12,7 @@ router.post("/login", userController.loginUser);
 //For loging out:
 router.post("/logout", userController.logoutUser);
 
+//For authenticating using the cookie file:
+router.get("/cookie", userController.cookie);
+
 module.exports = router;

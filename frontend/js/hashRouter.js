@@ -1,14 +1,3 @@
-let authenticated;
-
-window.onload = () => {
-    authenticated = sessionStorage.getItem("authenticated");
-    if(!authenticated){
-        window.location.hash = "#login";
-    }else{
-        window.location.hash = "";
-    }
-}
-
 const links = document.querySelectorAll("nav a");
 
 const urlPageTitle = "Chalkboard";
@@ -39,6 +28,27 @@ const routes = {
     }
 } 
 
+let authenticated;
+
+window.onload = async () => {
+    authenticated = sessionStorage.getItem("authenticated");
+    if(!authenticated){
+        window.location.hash = "#login";
+    }else{
+        window.location.hash = "";
+    }
+    for(let i = 0; i < routes.length; i++){
+        const script = document.createElement('script');
+        script.src = route.script;
+        script.defer = true;
+        document.body.appendChild(script);    
+    }
+    //Sending request to server to validate the client using stored cookie:
+    const res = await fetch("http://localhost:3000/api/auth/cookie");
+    const json = await res.json();
+    console.log("From server:", json);
+}
+    
 const locationHandler = async () => {
     const location = window.location.hash.replace("#", "");
     let route;
@@ -49,16 +59,6 @@ const locationHandler = async () => {
     }
     const html = await fetch(route.template).then(data => data.text());
     document.querySelector("#mainPage").innerHTML = html;
-    if(route.script){
-        const scripts = document.body.getElementsByTagName("script");
-        for(let i = 0; i < scripts.length; i++){
-            if(scripts[i].src != );
-        }
-        const script = document.createElement('script');
-        script.src = route.script;
-        script.defer = true;
-        document.body.appendChild(script);
-    }
     document.title = route.title;
     document  
         .querySelector('meta[name="description"]')
