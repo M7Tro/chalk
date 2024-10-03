@@ -278,3 +278,13 @@ I had problems with acessing the cookies. I did not realized that you can't acce
 
 And then I realized that I don't really need them. I will simply send a request that automatically attaches the cookies and stores credentials in the local storage. This way, only if you have relevant data in local storage will you be able to access everything. 
 
+
+
+
+Okay. What do I do now? I have the signup and login funcitnality working. But I did not implement the stuff that I actually want: if the user is logged in, he immediately sees the canvas. If not, he navigates between signup and login. How do I do that? 
+
+We can't access the cookie: they are httpOnly. 
+
+I am going to use sessionStorage: similar to localStorage, but expires if browser or tab is closed. It even persists over page reloads. 
+
+Essentially, on every load of the window, we send a request to the server with out cookie. If server can authenticate us, we save the response in sesion storage and let the user see the canvas page. Otherwise, user can only view login and signup pages.

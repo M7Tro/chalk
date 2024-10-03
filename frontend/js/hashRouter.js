@@ -1,3 +1,10 @@
+let authenticated;
+
+window.onload = () => {
+    authenticated = sessionStorage.getItem("authenticated");
+    console.log(authenticated);
+}
+
 const links = document.querySelectorAll("nav a");
 
 const urlPageTitle = "Chalkboard";
@@ -34,7 +41,13 @@ const locationHandler = async () => {
         location = '/';
     }
 
-    const route = routes[location] || routes[404];
+    let route 
+    if(authenticated){
+        route = routes["/"] || routes[404];
+    }else{
+        route = routes["signup"];
+    }
+    
     const html = await fetch(route.template).then(data => data.text());
     document.querySelector("#mainPage").innerHTML = html;
     if(route.script){
@@ -51,4 +64,3 @@ const locationHandler = async () => {
 
 window.addEventListener("hashchange", locationHandler); 
 locationHandler(); //execute on pageload
-
