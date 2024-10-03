@@ -2,7 +2,11 @@ let authenticated;
 
 window.onload = () => {
     authenticated = sessionStorage.getItem("authenticated");
-    console.log(authenticated);
+    if(!authenticated){
+        window.location.hash = "#login";
+    }else{
+        window.location.hash = "";
+    }
 }
 
 const links = document.querySelectorAll("nav a");
@@ -36,18 +40,13 @@ const routes = {
 } 
 
 const locationHandler = async () => {
-    let location = window.location.hash.replace("#", "");
-    if(location.length == 0){
-        location = '/';
-    }
-
-    let route 
-    if(authenticated){
-        route = routes["/"] || routes[404];
+    const location = window.location.hash.replace("#", "");
+    let route;
+    if(window.location.hash.length == 0){
+        route = routes["/"];
     }else{
-        route = routes["signup"];
+        route = routes[location] || routes[404];
     }
-    
     const html = await fetch(route.template).then(data => data.text());
     document.querySelector("#mainPage").innerHTML = html;
     if(route.script){
