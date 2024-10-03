@@ -50,6 +50,10 @@ const locationHandler = async () => {
     const html = await fetch(route.template).then(data => data.text());
     document.querySelector("#mainPage").innerHTML = html;
     if(route.script){
+        const scripts = document.body.getElementsByTagName("script");
+        for(let i = 0; i < scripts.length; i++){
+            if(scripts[i].src != );
+        }
         const script = document.createElement('script');
         script.src = route.script;
         script.defer = true;
