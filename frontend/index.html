@@ -10,8 +10,58 @@
 <body>
     <div id="root"> 
         <div id="mainPage">
+
+            <div id="canvas">
+                <div class="input">
+                    <label for="color">Color:</label>
+                    <input type="color" name="color" class="color">
+                    <label for="lineWidth">Line Width px:</label>
+                    <input type="number" name="lineWidth" class="lineWidth">
+                    <button class="clear">Clear</button>
+                    <button class="save">Save</button>
+                </div>
+                <canvas class="chalkboard">
+                    Sorry, but the application is not supported in your browser.
+                </canvas>
+            </div>
+
+            <div id="signup">
+                <nav>
+                    <a href="/#signup">Sign Up</a>
+                    <a href="/#login">Log In</a>
+                </nav>
+                <div class="signup">
+                    <form>
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password">
+                        <button>Sign Up</button>
+                    </form>
+                </div>
+            </div>
+
+            <div id="login">
+                <nav>
+                    <a href="/#signup">Sign Up</a>
+                    <a href="/#login">Log In</a>
+                </nav>
+                <div class="login">
+                    <form>
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password">
+                        <button>Log In</button>
+                    </form>
+                </div>
+            </div>
+
         </div>
     </div>
     <script defer src="./js/hashRouter.js"></script>
+    <script defer src="./js/canvas.js"></script>
+    <script defer src="./js/login.js"></script>
+    <script defer src="./js/signup.js"></script>
 </body>
 </html>

@@ -288,3 +288,22 @@ We can't access the cookie: they are httpOnly.
 I am going to use sessionStorage: similar to localStorage, but expires if browser or tab is closed. It even persists over page reloads. 
 
 Essentially, on every load of the window, we send a request to the server with out cookie. If server can authenticate us, we save the response in sesion storage and let the user see the canvas page. Otherwise, user can only view login and signup pages.
+
+
+I am back. This week has been quite fast for me: I spent most of my time on assignments. I also woke up early. And for the last few days I did not overeat: just two meals. I am starting to think that I might have found a way to live my life. You might ask: "What kind of life would it be?" The thing is that I don't know. And I am starting feel okay about it. I can control some stuff and make choices. And certain things will or will not happen depending on my choices. But I don't think I will ever be 100% confident in everything: in what I know, in what I want, in what I do. And that does not bother me that much anymore. Still scary, but at least I have this feeling that there is no other way to live life other than walking through uncertainty. 
+
+I also start noticing importance of keeping doing things even if it is not perfect. You should try to have a good day even if you slept through your alarms and feel weak; you should study even if you look fat in the reflection of the screen; you should work on assignments even if you don't know how to approach them.
+
+There is never a perfect time for starting. Only now. 
+
+
+
+
+
+Okay. Enough philosophy. What do I do next? On pageload, the client sends a GET request to the server. The get request contains a JWT cookie if the user previously registered. If we get a successful response from server, we save the contents of the response in localStorage. I thought I would use sessionStorage, but I want data to persis on the browser for some time. But I also do not want to make it permanent, so the localstorage data will contain expiration date: the client's script will read it and erase the JWT if it is too old. 
+
+
+I keep ettnig probles with javascript when changing pages. This is because elements appear and re-appear. I have tried adding and removing script tags but it doesn't work. I will now try something fundamentally different: what if we keep all the html on the page and simply change stuff to display none until its time? Display:none removes the element from the page, while keeping it in the DOM. seems like a perfect candidate.
+
+
+AMAZING! It seems to work. I change change display properties on hashchange event. And the script tags are all included in the index.html. I am able to send the requests. Nice.

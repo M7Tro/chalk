@@ -1,69 +1,25 @@
-const links = document.querySelectorAll("nav a");
+const canvasHtml = document.querySelector("#canvas");
+const signupHtml = document.querySelector("#signup");
+const loginHtml = document.querySelector("#login");
 
-const urlPageTitle = "Chalkboard";
+//By default, we will show the login page:
+window.location.hash = "#login";
+canvasHtml.style.display = 'none';
+signupHtml.style.display = 'none';
 
-const routes = {
-    404: {
-        template: "/pages/404.html",
-        title: "404 | " + urlPageTitle,
-        description: "Page not found"
-    },
-    "/":{
-        template: "/pages/canvas.html",
-        title: urlPageTitle,
-        description: "Draw",
-        script: "../js/canvas.js"
-    },
-    signup:{
-        template: "/pages/signup.html",
-        description: "Sign Up",
-        title: "Signup | " + urlPageTitle,
-        script: "../js/signup.js"
-    },
-    login:{
-        template: "/pages/login.html",
-        description: "Log In",
-        title: "Login | " + urlPageTitle,
-        script: "../js/login.js"
+window.addEventListener("hashchange", (e) => {
+    const hash = window.location.hash.replace("#","");
+    if(hash == 'login'){
+        canvasHtml.style.display = 'none';
+        signupHtml.style.display = 'none';
+        loginHtml.style.display = 'block';
+    }else if(hash == 'signup'){
+        canvasHtml.style.display = 'none';
+        loginHtml.style.display = 'none';
+        signupHtml.style.display = 'block';
+    }else {
+        canvasHtml.style.display = 'block';
+        signupHtml.style.display = 'none';
+        loginHtml.style.display = 'none';
     }
-} 
-
-let authenticated;
-
-window.onload = async () => {
-    authenticated = sessionStorage.getItem("authenticated");
-    if(!authenticated){
-        window.location.hash = "#login";
-    }else{
-        window.location.hash = "";
-    }
-    for(let i = 0; i < routes.length; i++){
-        const script = document.createElement('script');
-        script.src = route.script;
-        script.defer = true;
-        document.body.appendChild(script);    
-    }
-    //Sending request to server to validate the client using stored cookie:
-    const res = await fetch("http://localhost:3000/api/auth/cookie");
-    const json = await res.json();
-    console.log("From server:", json);
-}
-    
-const locationHandler = async () => {
-    const location = window.location.hash.replace("#", "");
-    let route;
-    if(window.location.hash.length == 0){
-        route = routes["/"];
-    }else{
-        route = routes[location] || routes[404];
-    }
-    const html = await fetch(route.template).then(data => data.text());
-    document.querySelector("#mainPage").innerHTML = html;
-    document.title = route.title;
-    document  
-        .querySelector('meta[name="description"]')
-        .setAttribute("content", route.description);
-}  
-
-window.addEventListener("hashchange", locationHandler); 
-locationHandler(); //execute on pageload
+})
