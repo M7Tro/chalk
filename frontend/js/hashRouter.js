@@ -1,25 +1,48 @@
 const canvasHtml = document.querySelector("#canvas");
 const signupHtml = document.querySelector("#signup");
 const loginHtml = document.querySelector("#login");
+sessionStorage.setItem("username", null);
 
 //By default, we will show the login page:
 window.location.hash = "#login";
 canvasHtml.style.display = 'none';
 signupHtml.style.display = 'none';
 
-window.addEventListener("hashchange", (e) => {
-    const hash = window.location.hash.replace("#","");
-    if(hash == 'login'){
+function setDisplay(hash){
+    if(hash == '#login'){
         canvasHtml.style.display = 'none';
         signupHtml.style.display = 'none';
         loginHtml.style.display = 'block';
-    }else if(hash == 'signup'){
+    }else if(hash == '#signup'){
         canvasHtml.style.display = 'none';
         loginHtml.style.display = 'none';
         signupHtml.style.display = 'block';
-    }else {
+    }else if (hash == '#canvas' && sessionStorage.getItem("username")) {
         canvasHtml.style.display = 'block';
         signupHtml.style.display = 'none';
         loginHtml.style.display = 'none';
     }
+}
+
+window.addEventListener("hashchange", (e) => {
+    const hash = window.location.hash;
+    setDisplay(hash);
 })
+
+window.onload = async (event) => {
+    try{
+        const res = await fetch("http://localhost:3000/api/auth/cookie", {
+            credentials: 'include'
+        });
+        const json = await res.json();
+        if(json.message == "authentication is required"){
+            throw new Error("JWT validation did not work");
+        }else{
+            sessionStorage.setItem("username", json.username);
+            window.location.hash = "#canvas";            
+        }
+    }catch(err){
+        sessionStorage.setItem("username", null);
+        window.location.hash = "#login";
+    }
+}

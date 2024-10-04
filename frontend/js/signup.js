@@ -12,7 +12,10 @@ signupForm.addEventListener("submit", async (e) => {
             credentials: 'include'
         })
         const json = await response.json();
-        console.log("Response from serevr:", json);
+        if(response.ok){
+            sessionStorage.setItem("username", json.username);
+            window.location.hash = "#canvas";
+        }
     }catch(err){
         console.log("Error from server during signup:", err.message);
     }

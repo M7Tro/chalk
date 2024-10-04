@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
-const authMiddleware = require('./middleware/authMiddleware.js');
 const cors = require('cors');
 
 //CORS config:
@@ -38,5 +37,3 @@ app.use(express.text());
 
 //Implementing API endpoints:
 app.use("/api/auth", cors(corsOptions), authRouter);
-
-app.use(authMiddleware);

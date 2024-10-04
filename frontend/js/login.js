@@ -4,7 +4,6 @@ loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const username = e.target.username.value;
     const password = e.target.password.value;
-    console.log(email, password);
     try{
         const response = await fetch("http://localhost:3000/api/auth/login", {
             method: "POST",
@@ -13,6 +12,10 @@ loginForm.addEventListener("submit", async (e) => {
             credentials: "include"
         })
         const json = await response.json();
+        if(response.ok){
+            sessionStorage.setItem("username", json.username);
+            window.location.hash = "#canvas";
+        }
     }catch(err){
         console.log("Error from server during login:", err.message);
     }

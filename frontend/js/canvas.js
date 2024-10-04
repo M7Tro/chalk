@@ -1,5 +1,4 @@
 const saveButton = document.querySelector(".save");
-
 const color = document.querySelector('.color');
 const lineWidth = document.querySelector('.lineWidth');
 lineWidth.value = 1; //we want 1 to be displayed by default
@@ -16,7 +15,7 @@ let mousedown = false;
 //Initial setup of the canvas on injection:
 context = canvas.getContext("2d");
 //This is necessary for proper function of the canvas. If width and height are specified only with CSS, canvas will be stretched
-let rect = canvas.getBoundingClientRect();
+let rect = document.body.querySelector("#mainPage").getBoundingClientRect();
 canvas.setAttribute("width", rect.width);
 canvas.setAttribute("height", rect.height);
 
