@@ -312,3 +312,9 @@ Actually, I think I will use sessionStorage to make the state accessible from di
 
 
 For some reason the dics do not take up the dimensions I want them to have. 
+
+
+I fixed the canvas. Just had to use window.innerHeight instead of the other tags I used.
+
+
+But now I also need to fix the look of the login page. 

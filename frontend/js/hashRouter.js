@@ -4,7 +4,7 @@ const loginHtml = document.querySelector("#login");
 sessionStorage.setItem("username", null);
 
 //By default, we will show the login page:
-window.location.hash = "#login";
+window.location.hash = "none";
 canvasHtml.style.display = 'none';
 signupHtml.style.display = 'none';
 
