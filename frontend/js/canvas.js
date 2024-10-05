@@ -15,9 +15,9 @@ let mousedown = false;
 //Initial setup of the canvas on injection:
 context = canvas.getContext("2d");
 //This is necessary for proper function of the canvas. If width and height are specified only with CSS, canvas will be stretched
-let rect = document.body.querySelector("#mainPage").getBoundingClientRect();
-canvas.setAttribute("width", rect.width);
-canvas.setAttribute("height", rect.height);
+
+canvas.setAttribute("width", window.innerWidth / 5 * 4);
+canvas.setAttribute("height", window.innerHeight);
 
 //Drawing functionality:
 canvas.addEventListener("mousedown", (e) => {

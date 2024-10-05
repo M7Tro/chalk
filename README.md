@@ -309,3 +309,6 @@ I keep ettnig probles with javascript when changing pages. This is because eleme
 AMAZING! It seems to work. I change change display properties on hashchange event. And the script tags are all included in the index.html. I am able to send the requests. Nice.
 
 Actually, I think I will use sessionStorage to make the state accessible from different js files that will update the session.
+
+
+For some reason the dics do not take up the dimensions I want them to have. 
