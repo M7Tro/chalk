@@ -39,8 +39,10 @@ body{
     display: flex;
     flex-direction: column;
     text-align: start;
-    width: 10%;
+    width: 7%;
     margin: 20px;
+
+    z-index: 1;
 }
 .input * {
     width: 100%;
@@ -53,6 +55,9 @@ body{
     position: absolute;
     display: block;
     border: 3px solid black;
+
+    left: 12.5%;
+    z-index: -1;
 }
 
 /*Signup page:*/

@@ -16,7 +16,7 @@ let mousedown = false;
 context = canvas.getContext("2d");
 //This is necessary for proper function of the canvas. If width and height are specified only with CSS, canvas will be stretched
 
-canvas.setAttribute("width", window.innerWidth / 5 * 4);
+canvas.setAttribute("width", window.innerWidth / 4 * 3);
 canvas.setAttribute("height", window.innerHeight);
 
 //Drawing functionality:
