@@ -1,7 +1,7 @@
 const saveButton = document.querySelector(".save");
 const color = document.querySelector('.color');
 const lineWidth = document.querySelector('.lineWidth');
-lineWidth.value = 1; //we want 1 to be displayed by default
+lineWidth.value = 10; //we want 1 to be displayed by default
 const clearButton = document.querySelector('.clear');
 
 const canvas = document.querySelector(".chalkboard");
@@ -14,6 +14,7 @@ let mousedown = false;
 
 //Initial setup of the canvas on injection:
 context = canvas.getContext("2d");
+
 //This is necessary for proper function of the canvas. If width and height are specified only with CSS, canvas will be stretched
 
 canvas.setAttribute("width", window.innerWidth / 4 * 3);
@@ -22,6 +23,8 @@ canvas.setAttribute("height", window.innerHeight);
 //Drawing functionality:
 canvas.addEventListener("mousedown", (e) => {
     mousedown = true;
+    
+    context.lineWidth = lineWidth.value;
 
     canvasX = e.clientX - canvas.getBoundingClientRect().x;
     canvasY = e.clientY - canvas.getBoundingClientRect().y;

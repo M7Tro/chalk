@@ -318,3 +318,11 @@ I fixed the canvas. Just had to use window.innerHeight instead of the other tags
 
 
 But now I also need to fix the look of the login page. 
+
+
+Fixed.
+
+Now I am trying to add a log out button. But for some reason, changes that I add to canvas.html do not reflect. hmmm. 
+
+
+Oh. I forget that I added all the divs into index.html. Stupid. 

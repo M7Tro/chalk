@@ -13,6 +13,8 @@ loginForm.addEventListener("submit", async (e) => {
         })
         const json = await response.json();
         if(response.ok){
+            e.target.username.value = "";
+            e.target.password.value = "";
             sessionStorage.setItem("username", json.username);
             window.location.hash = "#canvas";
         }
