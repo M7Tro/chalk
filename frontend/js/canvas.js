@@ -43,7 +43,7 @@ canvas.addEventListener("mousemove", (e) => {
     }
 })
 
-canvas.addEventListener("mouseup", (e) => {
+window.addEventListener("mouseup", (e) => {
     mousedown = false;
     context.closePath();
 })
