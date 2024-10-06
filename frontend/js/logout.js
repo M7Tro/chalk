@@ -9,6 +9,8 @@ LogoutButton.addEventListener("click", async () => {
     })
     if(res.ok){
         sessionStorage.removeItem('username');
+        context.fillStyle = "white";
+        context.fillRect(0, 0, canvas.width, canvas.height);    
         window.location.hash = "#login";
     }
     return res.json();
