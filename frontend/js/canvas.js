@@ -65,5 +65,6 @@ clearButton.addEventListener('click', () => {
 
 //The 'save' button:
 saveButton.addEventListener("click", () => {
-    console.log("Save button clicked");
+    let canvasImage = canvas.toDataURL();
+    console.log("Canvas image:", canvasImage);
 })

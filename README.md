@@ -326,3 +326,17 @@ Now I am trying to add a log out button. But for some reason, changes that I add
 
 
 Oh. I forget that I added all the divs into index.html. Stupid. 
+
+
+
+At this point, a user can login/signup to use the canvas and draw on it. I guess it means that I know must implement saving of the drawing into the database. And later I would load the picture from it into the browser. 
+
+
+How do I do it?
+
+From tutorials on internet:
+Draw something => convert image to URL format (base64) with canvas.toDataURL() => send data to the server with fetch
+
+
+How do you store a base64 image in MongoDB? 
+
