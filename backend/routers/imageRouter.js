@@ -4,6 +4,6 @@ const imageController = require('../controllers/imageController.js');
 
 router.post('/save', imageController.saveImage);
 
-router.get("/load", imageController.loadImage);
+router.get("/load/:username", imageController.loadImage);
 
 module.exports = router;

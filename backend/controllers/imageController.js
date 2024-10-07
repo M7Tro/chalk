@@ -13,7 +13,13 @@ const saveImage = async (req, res) => {
 }
 
 const loadImage = async (req, res) => {
-    res.status(200).json({message: "loadImage reached"});
+    try{
+        const {username} = req.params;
+        const image = await Image.find({username}).select("-type").select("-username");
+        res.status(200).json({image}); 
+    }catch(err){
+        res.status(400).json({error: err.message});
+    }
 }
 
 module.exports = {
