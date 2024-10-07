@@ -21,6 +21,13 @@ function setDisplay(hash){
         canvasHtml.style.display = 'block';
         signupHtml.style.display = 'none';
         loginHtml.style.display = 'none';
+        if(sessionStorage.getItem("canvasImage")){
+            const canvasImage = new Image();
+            canvasImage.src = sessionStorage.getItem("canvasImage");
+            canvasImage.onload = () => {
+                context.drawImage(canvasImage, 0, 0);
+            }
+        }
     }
 }
 

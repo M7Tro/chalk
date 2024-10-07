@@ -344,3 +344,6 @@ You will have to create a schema for storing images. While it might have common 
 
 The required "data" field has type Buffer. It stores a buffer object containing the binary image data. 
 
+I have implemented endpoints for adding and retrieving images in mongodb.
+
+Let's try to save image base64 URL in sessionStorage and upload it on refresh of the page.
