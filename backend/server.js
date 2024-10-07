@@ -13,6 +13,7 @@ const corsOptions = {
 
 //Routers:
 const authRouter = require("./routers/authRouter.js");
+const imageRouter = require("./routers/imageRouter.js");
 
 const app = express();
 dotenv.config();//To be able to use the .env fil
@@ -37,3 +38,4 @@ app.use(express.text());
 
 //Implementing API endpoints:
 app.use("/api/auth", cors(corsOptions), authRouter);
+app.use("/api/image", imageRouter);

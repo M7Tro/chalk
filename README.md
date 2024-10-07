@@ -340,3 +340,7 @@ Draw something => convert image to URL format (base64) with canvas.toDataURL() =
 
 How do you store a base64 image in MongoDB? 
 
+You will have to create a schema for storing images. While it might have common fields like name, it must also have fields "type" and "data". Type is a required string that specifies the MIME type: "image/png". A MIME type indicates the nature/format of data.
+
+The required "data" field has type Buffer. It stores a buffer object containing the binary image data. 
+
