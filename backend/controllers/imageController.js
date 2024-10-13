@@ -18,6 +18,7 @@ const loadImage = async (req, res) => {
         const image = await Image.find({username}).select("-type").select("-username");
         res.status(200).json({image}); 
     }catch(err){
+        console.log("Error while saving image:", err.message);
         res.status(400).json({error: err.message});
     }
 }
@@ -25,4 +26,4 @@ const loadImage = async (req, res) => {
 module.exports = {
     saveImage,
     loadImage
-}
+} 
