@@ -38,4 +38,4 @@ app.use(express.text());
 
 //Implementing API endpoints:
 app.use("/api/auth", cors(corsOptions), authRouter);
-app.use("/api/image", imageRouter);
+app.use("/api/image", cors(corsOptions), imageRouter);
