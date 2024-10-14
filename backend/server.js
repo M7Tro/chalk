@@ -6,7 +6,13 @@ const cors = require('cors');
 
 //CORS config:
 const corsOptions = {
-    origin: "http://localhost:5501",
+    origin: function(origin, callback){
+        if(origin.includes("http://localhost:")){
+            callback(null, true)
+        }else{
+            callback(new Error("Unidentified URL"));
+        }
+    },
     optionsSuccessStatus: 200,
     credentials: true
 }

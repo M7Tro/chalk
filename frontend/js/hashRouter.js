@@ -46,10 +46,23 @@ window.onload = async (event) => {
             throw new Error("JWT validation did not work");
         }else{
             sessionStorage.setItem("username", json.username);
+            await fetchImage();
             window.location.hash = "#canvas";            
         }
     }catch(err){
         sessionStorage.setItem("username", null);
         window.location.hash = "#login";
     }
+}
+
+const fetchImage = async () => {
+    const username = sessionStorage.getItem("username");
+    if(username){
+        const loadImageResponse = await fetch(`http://localhost:3000/api/image/load/${username}`, {
+            credentials: 'include',
+        })
+        const loadImage = await loadImageResponse.json();
+        console.log("loadImage", loadImage);
+    }
+
 }

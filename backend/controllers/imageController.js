@@ -19,7 +19,7 @@ const saveImage = async (req, res) => {
 const loadImage = async (req, res) => {
     try{
         const {username} = req.params;
-        const image = await Image.find({username}).select("-type").select("-username");
+        const image = await Image.findOne({username}).select("-type").select("-username");
         res.status(200).json({image}); 
     }catch(err){
         res.status(400).json({error: err.message});
