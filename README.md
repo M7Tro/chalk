@@ -357,3 +357,10 @@ The difficulty I am now facing is converting the buffer data stored in mongodb i
 
 I think I solved a problem by sending the base64 string from backend. I use toString() method of the Image object returned by the database. 
 
+But for some reason, the image is not saved as intended on click of the save button.  
+
+I see. I get this error when trying to save something to the database: "PayloadTooLargeError: request entity too large"
+
+
+It seems to be a backend problem. I fixed it by adding a setting to express.text(): {limit: "50mb"}
+
