@@ -8,7 +8,7 @@ window.location.hash = "none";
 canvasHtml.style.display = 'none';
 signupHtml.style.display = 'none';
 
-function setDisplay(hash){
+async function setDisplay(hash){
     if(hash == '#login'){
         canvasHtml.style.display = 'none';
         signupHtml.style.display = 'none';
@@ -18,6 +18,7 @@ function setDisplay(hash){
         loginHtml.style.display = 'none';
         signupHtml.style.display = 'block';
     }else if (hash == '#canvas' && sessionStorage.getItem("username")) {
+        await fetchImage(); //loading image from database into sessionStorage 
         canvasHtml.style.display = 'block';
         signupHtml.style.display = 'none';
         loginHtml.style.display = 'none';
@@ -66,5 +67,4 @@ const fetchImage = async () => {
             sessionStorage.setItem("canvasImage", loadImage);
         }
     }
-
 }
