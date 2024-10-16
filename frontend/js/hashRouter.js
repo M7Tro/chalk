@@ -62,7 +62,9 @@ const fetchImage = async () => {
             credentials: 'include',
         })
         const loadImage= await loadImageResponse.json();
-        console.log("loadImage:", loadImage);
+        if(loadImage){
+            sessionStorage.setItem("canvasImage", loadImage);
+        }
     }
 
 }
