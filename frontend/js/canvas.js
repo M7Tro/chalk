@@ -48,7 +48,7 @@ window.addEventListener("mouseup", (e) => {
     context.closePath();
 })
 
-//Changing color abd line width with user input:
+//Changing color and line width with user input:
 color.addEventListener("change", (e) => {
     context.strokeStyle = e.target.value;
 })

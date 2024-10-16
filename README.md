@@ -347,3 +347,13 @@ The required "data" field has type Buffer. It stores a buffer object containing 
 I have implemented endpoints for adding and retrieving images in mongodb.
 
 Let's try to save image base64 URL in sessionStorage and upload it on refresh of the page.
+
+
+
+....
+
+
+The difficulty I am now facing is converting the buffer data stored in mongodb into an image that I can use upload on canvas.
+
+I think I solved a problem by sending the base64 string from backend. I use toString() method of the Image object returned by the database. 
+

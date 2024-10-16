@@ -21,7 +21,7 @@ function setDisplay(hash){
         canvasHtml.style.display = 'block';
         signupHtml.style.display = 'none';
         loginHtml.style.display = 'none';
-        if(sessionStorage.getItem("canvasImage")){
+        if(sessionStorage.getItem("canvasImage")){//This is where we load image if it is available in session storage:
             const canvasImage = new Image();
             canvasImage.src = sessionStorage.getItem("canvasImage");
             canvasImage.onload = () => {
@@ -61,8 +61,8 @@ const fetchImage = async () => {
         const loadImageResponse = await fetch(`http://localhost:3000/api/image/load/${username}`, {
             credentials: 'include',
         })
-        const loadImage = await loadImageResponse.json();
-        console.log("loadImage", loadImage);
+        const loadImage= await loadImageResponse.json();
+        console.log("loadImage:", loadImage);
     }
 
 }
