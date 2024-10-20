@@ -364,3 +364,13 @@ I see. I get this error when trying to save something to the database: "PayloadT
 
 It seems to be a backend problem. I fixed it by adding a setting to express.text(): {limit: "50mb"}
 
+....
+
+
+October 20th. What should I do next? At this point, you can log in. Get your drawing saved. Log out. 
+
+I should enable the sign up functionality. I already have the JS script for adding new users to database. But I do not have it properly implemented on the frontend. 
+
+A logged out user should be able to see navbar that lets you either sign up or log in. 
+
+There IS a  navbar right now. But it is ugly. 

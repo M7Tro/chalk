@@ -104,3 +104,18 @@ body{
 .login form button{
     font-size: 2rem;
 }
+
+nav {
+    position: relative;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+
+    padding: 50px 20px;
+    margin: 0 auto;
+
+    font-size: 3rem;
+}
