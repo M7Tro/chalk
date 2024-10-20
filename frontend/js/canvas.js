@@ -68,17 +68,21 @@ saveButton.addEventListener("click", async () => {
     try{
         let canvasImage = canvas.toDataURL();
         sessionStorage.setItem("canvasImage", canvasImage);
+        const username = sessionStorage.getItem("username");
+        if(!username){
+            window.location.hash = "#login";
+        }
         const res = await fetch("http://localhost:3000/api/image/save", {
             method: "POST",
             credentials: 'include',
             headers: {
                 "Content-Type": "text/plain"
             },
-            body: JSON.stringify({username: "salam", type: "image/png", data: canvasImage})
+            body: JSON.stringify({username, type: "image/png", data: canvasImage})
         })
         if(res.ok){
             const json = await res.json();
-            console.log("Json data:", json);
+            //console.log("Json data:", json);
         }
 
     }catch(err){

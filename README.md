@@ -374,3 +374,12 @@ I should enable the sign up functionality. I already have the JS script for addi
 A logged out user should be able to see navbar that lets you either sign up or log in. 
 
 There IS a  navbar right now. But it is ugly. 
+
+
+I have a problem. A new user that I have created with the signup page. I can't really log in properly and save a drawing. I get a server error. 
+
+I also noticed that the image is saved/loaded not as intended: it shows [object Object] in session storage. 
+
+
+Okay. I see a few problems. The save button does not actually save the drawing. I get a 400 status response. Looking at the database, I can see that new images do not get added and old images are not updated. 
+
