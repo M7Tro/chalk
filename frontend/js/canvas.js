@@ -3,6 +3,9 @@ const color = document.querySelector('.color');
 const lineWidth = document.querySelector('.lineWidth');
 lineWidth.value = 10; //we want 1 to be displayed by default
 const clearButton = document.querySelector('.clear');
+//Array for storing history of the drawings:
+const canvasHistory = [];
+const undoButton = document.querySelector(".undo");
 
 const canvas = document.querySelector(".chalkboard");
 let context;
@@ -46,6 +49,8 @@ canvas.addEventListener("mousemove", (e) => {
 window.addEventListener("mouseup", (e) => {
     mousedown = false;
     context.closePath();
+    let canvasImage = canvas.toDataURL();
+    canvasHistory.push(canvasImage);
 })
 
 //Changing color and line width with user input:

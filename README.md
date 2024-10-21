@@ -393,4 +393,32 @@ Alright. A game. What kind of game? Obviously, one that uses drawing as its core
 
     A guessig game: a player is given a random word. The rest of the players in the lobby must guess the word by looking at what is drawn at the canvas. 
 
-    A lightweight graphical redactor? What if I make a website that lets you copy/paste image from a clipboard. And then do all kinds of stuff with it. Remove background, retrieve colors, change color scheme, etc. That would be pretty cool. Something that I would actually use: quite often I want to do something with a screenshot I mage. But all the editors on web are quite big and complex. It would be nice to have something lightweight. 
+    A lightweight graphical redactor? What if I make a website that lets you copy/paste image from a clipboard. And then do all kinds of stuff with it. Remove background, retrieve colors, change color scheme, etc. That would be pretty cool. Something that I would actually use: quite often I want to do something with a screenshot I mage. But all the editors on web are quite big and complex. It would be nice to have something lightweight. I might even try to integrate AI into the editor and add some fancy features? 
+
+Alright. Then it is decided. I will make a graphical redactor.
+
+But before I proceed with some significant features, I just realized that I missed some basic stuff. I want to add the "undo" button. 
+
+Another feature would be to disable the save button when the latest changes were added. 
+
+I also should add an eraser that removes similar to the way it works in goodnotes: jsut by touching the line, eraser removes the whole continuous line. 
+
+Let's work on these two: undo button and save button disable. 
+
+Undo Button:
+
+    To implement the undo button, I shall store the drawing history. I can do it with an array of base64 strings. 
+
+    An array will be appended for every "mousup" event on the Canvas. 
+
+    I can use a const array (array is mutable, but reference is constant) and push the drawings.
+
+    And for every press of the save button, the history gets erased.
+
+    ...
+
+    For some reason, I can't see the new button I added on the frontend. 
+
+    I forgot that I don't use those separate pages anymore. All the html is in index.hmtl
+
+    

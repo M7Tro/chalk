@@ -17,7 +17,6 @@ loginForm.addEventListener("submit", async (e) => {
             e.target.password.value = "";
             sessionStorage.setItem("username", json.username);
             window.location.hash = "#canvas";
-            console.log("json from server on login:", json);
         }
     }catch(err){
         console.log("Error from server during login:", err.message);
