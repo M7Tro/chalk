@@ -383,3 +383,14 @@ I also noticed that the image is saved/loaded not as intended: it shows [object 
 
 Okay. I see a few problems. The save button does not actually save the drawing. I get a 400 status response. Looking at the database, I can see that new images do not get added and old images are not updated. 
 
+...
+
+I am not sure whcih features I should add at this point. You can signup and login. You can draw with multiple  colors and different thickness of the pen. You can save the drawing in the database. And then the drawing is retrieved on your login. What is the next step?
+
+Let's think about the end goal. What do I want? A game. I want to create a website that someone would want to join to have fun. 
+
+Alright. A game. What kind of game? Obviously, one that uses drawing as its core mechanics. What can I do? How can I make something fast, lightweight and fun? How can I use the stuff that I implemented (drawing and storing it in database)?
+
+    A guessig game: a player is given a random word. The rest of the players in the lobby must guess the word by looking at what is drawn at the canvas. 
+
+    A lightweight graphical redactor? What if I make a website that lets you copy/paste image from a clipboard. And then do all kinds of stuff with it. Remove background, retrieve colors, change color scheme, etc. That would be pretty cool. Something that I would actually use: quite often I want to do something with a screenshot I mage. But all the editors on web are quite big and complex. It would be nice to have something lightweight. 
