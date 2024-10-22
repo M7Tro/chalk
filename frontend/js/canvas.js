@@ -75,6 +75,7 @@ clearButton.addEventListener('click', () => {
 //The 'save' button:
 saveButton.addEventListener("click", async () => {
     try{
+        saveButton.disabled = true;
         let canvasImage = canvas.toDataURL();
         sessionStorage.setItem("canvasImage", canvasImage);
         //clearing the history:
@@ -92,11 +93,7 @@ saveButton.addEventListener("click", async () => {
             },
             body: JSON.stringify({username, type: "image/png", data: canvasImage})
         })
-        if(res.ok){
-            const json = await res.json();
-            //console.log("Json data:", json);
-        }
-
+        saveButton.disabled = false;
     }catch(err){
         console.log("Error:", err.message);
     }
