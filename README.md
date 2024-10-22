@@ -421,4 +421,7 @@ Undo Button:
 
     I forgot that I don't use those separate pages anymore. All the html is in index.hmtl
 
+    I thought I made it work, but something strange is happening. 
+
+    The lower half of the canvas does not work properly. I can draw on it, but the changes do not reverse from there. 
     

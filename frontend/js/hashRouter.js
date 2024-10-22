@@ -65,6 +65,9 @@ const fetchImage = async () => {
         const loadImage= await loadImageResponse.json();
         if(loadImage){
             sessionStorage.setItem("canvasImage", loadImage);
+            //saving for the undo history:
+            canvasHistory.splice(0, canvasHistory.length);//clearing the history array
+            canvasHistory.push(loadImage);
         }
     }
-}
+} 

@@ -11,7 +11,7 @@ const corsOptions = {
         if(origin.includes("http://localhost:")){
             callback(null, true)
         }else{
-            callback(new Error("Unidentified URL"));
+            callback(new Error(`Unidentified URL: ${origin}`));
         }
     },
     optionsSuccessStatus: 200,

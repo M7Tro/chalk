@@ -46,11 +46,15 @@ canvas.addEventListener("mousemove", (e) => {
     }
 })
 
+
+
 window.addEventListener("mouseup", (e) => {
+    if(mousedown){
+        let canvasImage = canvas.toDataURL();
+        canvasHistory.push(canvasImage);
+    }
     mousedown = false;
     context.closePath();
-    let canvasImage = canvas.toDataURL();
-    canvasHistory.push(canvasImage);
 })
 
 //Changing color and line width with user input:
@@ -73,6 +77,9 @@ saveButton.addEventListener("click", async () => {
     try{
         let canvasImage = canvas.toDataURL();
         sessionStorage.setItem("canvasImage", canvasImage);
+        //clearing the history:
+        canvasHistory.splice(0, canvasHistory.length);
+        canvasHistory.push(canvasImage); //saving for the undo history
         const username = sessionStorage.getItem("username");
         if(!username){
             window.location.hash = "#login";
@@ -93,4 +100,19 @@ saveButton.addEventListener("click", async () => {
     }catch(err){
         console.log("Error:", err.message);
     }
+})
+
+//Undo button functionality:
+undoButton.addEventListener("click", async(e) => {
+    if(canvasHistory.length > 1){
+        undoButton.disabled = true;
+        const previousImage = canvasHistory[canvasHistory.length - 2];
+        const canvasImage = new Image();
+        canvasImage.src = previousImage;
+        canvasImage.onload = () => {
+            context.drawImage(canvasImage, 0, 0);
+            console.log("popped:",canvasHistory.pop());
+            undoButton.disabled = false;
+        }
+    } 
 })
