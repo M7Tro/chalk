@@ -425,3 +425,14 @@ Undo Button:
 
     The lower half of the canvas does not work properly. I can draw on it, but the changes do not reverse from there. 
     
+
+
+I added the undo button. And made sure that save button is disabled while loading. 
+
+I am not sure I should work on the eraser. WHat is the point? What am I building? 
+
+I don't think I should make some stupid redactor. What about AI stuff?
+
+What if I allow people to past object into a the canvas, then draw some objects on it, then run AI that turns the image into something cool using the drawings as sources for objects and original image as a tempalte for styling/colorscheme/etc. 
+
+That would be cool. How do I do it?

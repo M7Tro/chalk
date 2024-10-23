@@ -70,8 +70,10 @@ lineWidth.addEventListener("change", (e) => {
 clearButton.addEventListener('click', () => {
     context.fillStyle = "white";
     context.fillRect(0, 0, canvas.width, canvas.height);
-})
 
+    let canvasImage = canvas.toDataURL();
+    canvasHistory.push(canvasImage);
+})
 //The 'save' button:
 saveButton.addEventListener("click", async () => {
     try{

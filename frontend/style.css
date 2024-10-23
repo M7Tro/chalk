@@ -63,6 +63,10 @@ body{
     z-index: 2;
 }
 
+.chalkboard:hover{
+    cursor: crosshair;
+}
+
 /*Signup page:*/
 .signup form{
     display: flex;
