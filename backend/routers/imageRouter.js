@@ -9,4 +9,6 @@ router.post('/save', require('express').json({limit: "50mb"}), imageController.s
 
 router.get("/load/:username", imageController.loadImage);
 
+router.post("/generate", imageController.generateImage);
+
 module.exports = router;

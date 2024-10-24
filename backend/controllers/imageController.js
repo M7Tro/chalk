@@ -28,7 +28,17 @@ const loadImage = async (req, res) => {
     }
 }
 
+const generateImage = async (req, res) => {
+    try{
+        const {data} = JSON.parse(req.body);
+        res.status(200).json({message: `Endpoint works. data received: ${data}`})
+    }catch(err){
+        res.status(400).send("Some kind of problem");
+    }
+}
+
 module.exports = {
     saveImage,
-    loadImage
+    loadImage,
+    generateImage
 } 

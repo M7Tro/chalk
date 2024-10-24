@@ -119,6 +119,16 @@ undoButton.addEventListener("click", async(e) => {
 })
 
 //Prompt textarea code: 
-sendButton.addEventListener("click", (e) => {
-    console.log(canvas.toDataURL());
+sendButton.addEventListener("click", async (e) => {
+    try{
+        const res = await fetch("http://localhost:3000/api/image/generate", {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify({data: canvas.toDataURL()})
+        })
+        const json = await res.json();
+        console.log("Json from server:", json);
+    }catch(err){
+
+    }
 })
