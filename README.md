@@ -426,7 +426,6 @@ Undo Button:
     The lower half of the canvas does not work properly. I can draw on it, but the changes do not reverse from there. 
     
 
-
 I added the undo button. And made sure that save button is disabled while loading. 
 
 I am not sure I should work on the eraser. WHat is the point? What am I building? 
@@ -436,3 +435,18 @@ I don't think I should make some stupid redactor. What about AI stuff?
 What if I allow people to past object into a the canvas, then draw some objects on it, then run AI that turns the image into something cool using the drawings as sources for objects and original image as a tempalte for styling/colorscheme/etc. 
 
 That would be cool. How do I do it?
+
+I found some cool free Image to Image generative tool on the internet: LimeWire's API.
+
+For free, I can get 10 images for free. 
+
+To make a request to the API, I need to include an API key to the "Authorization" header of the request. 
+
+Note that there is a certain format that I must adhere to: Authorization: Bearer <API KEY>
+
+The API uses conventional HTTP response codes to indicate success or failure of a request:
+    2xx - success
+    4xx - error given the information provided 
+    5xx - error with LimeWire's servers 
+
+    
