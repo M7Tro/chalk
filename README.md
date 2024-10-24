@@ -449,4 +449,46 @@ The API uses conventional HTTP response codes to indicate success or failure of 
     4xx - error given the information provided 
     5xx - error with LimeWire's servers 
 
-    
+There are various API endpoints available to make various operations.
+
+The reason I like this API, other than it having a free plan, is that I can send an existing image as a basis. 
+
+
+Some image endpoints available:
+
+    Generate Image 
+
+        Prompt (required)
+
+        Negative prompt - describe what should not be included in the image 
+        
+        image (binary string) - the image that should be used as inspiration for generation 
+
+        Aspect ratio ( required ) - 1:1 by default 
+
+        style - specify one of the predefined styles for generating the image (Photorealistic, Scifi, Landscape)
+
+    Inpaint Image 
+
+        You can use this endpoint to modify certain parts of an image based on a text prompt.
+
+        You can provide a mask for a certain color that will be applied on the input image. The matching color will be replaced/manipulated.
+
+    Upload Assset
+
+        you can upload an asset for further processing by API. it will be accessible 24 hours after the upload. 
+
+How should I implement everything? 
+
+The API key should not be exposed to users. I shall store it on backend as an environment variablei inside .env.
+
+I will send a request with an image to the server, and the server will send the request with an API key to the LimeWire API to do the 
+necessary operations.
+
+Now, the question arises. What are the operations? How would it work? 
+
+On a high level, I want to add a text field on the frontend where users can input a prompt.
+
+There will be a button that lets you send the image. 
+
+And then you get the generated result back. 

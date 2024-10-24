@@ -67,6 +67,21 @@ body{
     cursor: crosshair;
 }
 
+.prompt{
+    border: 3px solid black;
+}
+
+textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+    background-color: black;
+    color: white;
+}
+
 /*Signup page:*/
 .signup form{
     display: flex;

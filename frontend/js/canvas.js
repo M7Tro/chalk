@@ -1,11 +1,13 @@
 const saveButton = document.querySelector(".save");
 const color = document.querySelector('.color');
 const lineWidth = document.querySelector('.lineWidth');
+const promptField = document.querySelector('textarea');
 lineWidth.value = 10; //we want 1 to be displayed by default
 const clearButton = document.querySelector('.clear');
 //Array for storing history of the drawings:
 const canvasHistory = [];
 const undoButton = document.querySelector(".undo");
+const sendButton = document.querySelector   (".send");
 
 const canvas = document.querySelector(".chalkboard");
 let context;
@@ -20,7 +22,7 @@ context = canvas.getContext("2d");
 
 //This is necessary for proper function of the canvas. If width and height are specified only with CSS, canvas will be stretched
 
-canvas.setAttribute("width", window.innerWidth / 4 * 3);
+canvas.setAttribute("width", window.innerWidth);
 canvas.setAttribute("height", window.innerHeight);
 
 //Drawing functionality:
@@ -114,4 +116,9 @@ undoButton.addEventListener("click", async(e) => {
             undoButton.disabled = false;
         }
     } 
+})
+
+//Prompt textarea code: 
+sendButton.addEventListener("click", (e) => {
+    console.log(canvas.toDataURL());
 })
