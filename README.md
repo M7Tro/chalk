@@ -492,3 +492,48 @@ On a high level, I want to add a text field on the frontend where users can inpu
 There will be a button that lets you send the image. 
 
 And then you get the generated result back. 
+
+
+Alright. It is Saturday, October 26th. 
+
+What should I do? 
+
+I want to make an app that lets you paste an image, draw some stuff, attach a prompt and get back some AI-generated content.
+
+What and how should I do it? 
+
+I have the drawing functionality. 
+
+But I did not yet figure out the API. Well then let's think about that. 
+
+Trying to understand documentation for the API is a bit intimidating.
+
+The website has a lot of tabs/sections.
+
+Not sure what to do and where to go. 
+
+But perhaps I shall not try to understand everything. 
+
+I should get a quick overview of how the website is set up and decide which sections I am interested in. Just like in today's C++ exam.
+
+I am still not sure which of the AI services I want to use for my application.
+
+Potential candidates are:
+
+    Image inpainting - replacing objects on the image 
+
+    Image to Image generation - generate image by passing prompts and an image
+
+I think I should go for the second option. 
+
+How should I work with the API? What are some good practices? ChatGPT says:
+
+    Do not expose the API key on the client-side.
+
+    Use the backend of your full stack application as a proxy. You send a request from frontend to the backend, while backend uses the necessary data (like API key) to send the request to the 3rd party API. 
+
+    Ensure that communication is done with HTTPS connection.
+
+    Use environment variables.
+
+By the way, there is a difference between a VPN and a Proxy. VPN secures your data by encripting it. 
