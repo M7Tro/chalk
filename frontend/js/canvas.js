@@ -124,9 +124,10 @@ sendButton.addEventListener("click", async (e) => {
         const res = await fetch("http://localhost:3000/api/image/generate", {
             method: "POST",
             credentials: "include",
-            body: JSON.stringify({data: canvas.toDataURL()})
+            body: JSON.stringify({canvasImage: canvas.toDataURL(), prompt: promptField.value})
         })
         const json = await res.json();
+        
         console.log("Json from server:", json);
     }catch(err){
 

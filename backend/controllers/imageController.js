@@ -29,13 +29,41 @@ const loadImage = async (req, res) => {
 }
 
 const generateImage = async (req, res) => {
-    try{
+    /* try{
         const {data} = JSON.parse(req.body);
         const API_KEY = process.env.API_KEY;
         res.status(200).json({message: `generateImage endpoint works.`})
     }catch(err){
         res.status(400).send("Some kind of problem on generateImage endpoint");
-    }
+    } */
+    try{
+        const {canvasImage, prompt} = JSON.parse(req.body);
+        const API_KEY = process.env.API_KEY;
+        //console.log("received Prompt:", prompt, " and image:", canvasImage);
+        const resp = await fetch(
+        `https://api.limewire.com/api/image/generation`,
+        {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'multipart/form-data',
+            'X-Api-Version': 'v1',
+            Accept: 'application/json',
+            Authorization: `Bearer ${API_KEY}`,
+            },
+            body: JSON.stringify({
+            prompt: prompt,
+            image: canvasImage,
+            aspect_ratio: '1:1'
+            })
+        }
+        ); 
+        const json = await resp.json();
+        console.log("json: ", json);
+        res.status(200).json(json);
+    }catch(err){
+        console.log(err);
+        res.status(400).json({error: err.message})
+    }    
 }
 
 module.exports = {

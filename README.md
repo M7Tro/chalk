@@ -537,3 +537,66 @@ How should I work with the API? What are some good practices? ChatGPT says:
     Use environment variables.
 
 By the way, there is a difference between a VPN and a Proxy. VPN secures your data by encripting it. 
+
+I have generated an API KEY and was able to access it on backend with process.env.
+
+Next step would be to actually use the API for something.
+
+But I need to read more about the way the API works: 
+
+    What is REST API?
+
+        REST API - REST stands for Representational State Transfer. It is a standardized software architecture style. A way of designing API's. REST API's exist for communication between client and server. 
+
+        RESTful web service - web service that uses REST API's.
+
+        REST API's are conenient because it is a common, widespread, standardized approach to designing web API's. 
+
+        REST API's are scalable and stateless. Stateless means that each request does rely on data from a database: it uses no states. Stateful API's, on the other hand, retrieve data from some storage. This can help you create customized behavior for a certain user, but might be difficult to scale. 
+
+        REST API's have high performance because they support cashing (???)
+
+        A request consists of a set of headers, operation type (GET, POST, etc.), endpoint, body/parameters 
+
+        In return, a  request receives a response. Response is typically JSON data. 
+
+    LimeWire's API:
+
+        For every request to the API, you must be authenticated. The essence of authentication is in providing the API key inside the "Authorization" header of the requst. The format of the content of the header is: "Bearer <API-KEY>"
+
+        There is a rate limit. It limits the amount of requests that you can make to the API. It is determined by your subscription plan.
+
+        Conventional HTTP response codes are used to convey the essence of the response.
+
+        Different endpoitns are avilable.
+
+        As I have decided to generate the image using image and a text prompt, I shall use the "generate" endpoint. 
+
+I was able to successfuly generate an image using the API using a prompt I type on frontend. 
+
+The problem now is that I get an internal error when I try to pass the canvasImage.
+
+I suspect that the issue is that the documentation expects a string<binary>. Yet the canvasImage is a base64 format. Perhaps I should convert the canvasImage data?
+
+First, let's do some research:
+
+    Base64 - most popular encoding on the web. You can encode to and from base64 using embedded window.atob and window.btoa
+
+    Base64 format combines bits into groups of 6. It means that there are 2^6 = 64 possible combinations for a 6-bit group.
+
+    Each group combination is mapped to characters(A-Z, a-z, 0-9,+,/) with indexes from 0 to 63 (64 characters in total).
+
+    Base64 is an ASCII representation of your binary data. 
+
+There are a few things I can't understand right now. 
+
+The API does not work as soon as I attach the image data. So the problem is somewhere in the way I set up the request and the type/format of image data.
+
+The documentation expects a string<binary>. Base64 is not exactly binary: it is a string that provides an ASCII representation of binary data. But on the other hand, maybe that is what the API is expecting and the word 'binary' simply implies that the nature of the string's data is something binary (like an image).
+
+Also, documentation says that image is a required part of a multi-part request.
+
+As I understand, a multi-part request lets you combine different data into a single request without need to encode everything.
+
+So there are a few things I must udnerstand: do I need to convert base64 into some other format and how do I send a multi-part request? 
+
