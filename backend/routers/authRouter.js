@@ -1,7 +1,7 @@
-const {Router} = require("express");
+import {Router} from 'express';
 const router = Router();
 
-const userController = require('../controllers/userController.js');
+import userController from '../controllers/userController.js';
 
 //For signing up:
 router.post("/signup",  userController.signupUser);
@@ -15,4 +15,4 @@ router.post("/logout", userController.logoutUser);
 //For authenticating using the cookie file:
 router.get("/cookie", userController.cookie);
 
-module.exports = router;
+export default router;

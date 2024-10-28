@@ -600,3 +600,7 @@ As I understand, a multi-part request lets you combine different data into a sin
 
 So there are a few things I must udnerstand: do I need to convert base64 into some other format and how do I send a multi-part request? 
 
+
+I am going to install the "form-data" package for multipart/form-data streams.
+
+It seems that to work with 'form-data' I must use the ES6 modules and rewrite every require to an import.

@@ -1,14 +1,15 @@
-const {Router} = require('express');
-const bodyParser = require('body-parser');
+import {Router} from 'express';
+import bodyParser from 'body-parser';
 const router = Router();
-const imageController = require('../controllers/imageController.js');
+import express from 'express';
+import imageController from "../controllers/imageController.js";
 
 
 
-router.post('/save', require('express').json({limit: "50mb"}), imageController.saveImage);//adding middleware to avoid payload error
+router.post('/save',express.json({limit: "50mb"}), imageController.saveImage);//adding middleware to avoid payload error
 
 router.get("/load/:username", imageController.loadImage);
 
 router.post("/generate", imageController.generateImage);
 
-module.exports = router;
+export default router;

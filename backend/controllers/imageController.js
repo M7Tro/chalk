@@ -1,4 +1,6 @@
-const Image = require('../models/Image.js');
+import Image from '../models/Image.js';
+import FormData from 'form-data';
+import fetch from 'node-fetch';
 
 const saveImage = async (req, res) => {
     try{
@@ -35,39 +37,47 @@ const generateImage = async (req, res) => {
         res.status(200).json({message: `generateImage endpoint works.`})
     }catch(err){
         res.status(400).send("Some kind of problem on generateImage endpoint");
-    } */
-    try{
-        const {canvasImage, prompt} = JSON.parse(req.body);
-        const API_KEY = process.env.API_KEY;
-        //console.log("received Prompt:", prompt, " and image:", canvasImage);
-        const resp = await fetch(
-        `https://api.limewire.com/api/image/generation`,
-        {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'multipart/form-data',
-            'X-Api-Version': 'v1',
-            Accept: 'application/json',
-            Authorization: `Bearer ${API_KEY}`,
-            },
-            body: JSON.stringify({
-            prompt: prompt,
-            image: canvasImage,
-            aspect_ratio: '1:1'
-            })
+    } */        
+        try{
+            const {data} = JSON.parse(req.body);
+            const API_KEY = process.env.API_KEY;
+            const form = new FormData();
+            form.append('prompt','A cute baby sea otter');
+            form.append('negative_prompt','darkness, fog');
+            form.append('image','bytes');
+            form.append('samples','2');
+            form.append('quality','LOW');
+            form.append('guidance_scale','50');
+            form.append('aspect_ratio','1:1');
+            form.append('style','PHOTOREALISTIC');
+        
+            const resp = await fetch(
+            `https://api.limewire.com/api/image/generation`,
+            {
+                method: 'POST',
+                headers: {
+                'X-Api-Version': 'v1',
+                Accept: 'application/json',
+                Authorization: 'Bearer <YOUR_lmwr_sk_*_HERE>'
+                },
+                body: form
+            }
+            );
+        
+            const json = await resp.json();
+            console.log(json);
+        }catch(err){
+
         }
-        ); 
-        const json = await resp.json();
-        console.log("json: ", json);
-        res.status(200).json(json);
-    }catch(err){
-        console.log(err);
-        res.status(400).json({error: err.message})
-    }    
+
+        
+
 }
 
-module.exports = {
+const imageController = {
     saveImage,
     loadImage,
     generateImage
 } 
+
+export default imageController;

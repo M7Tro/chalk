@@ -1,9 +1,9 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const cookieParser = require('cookie-parser');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+import express from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import bodyParser from 'body-parser';
 
 //CORS config:
 const corsOptions = {
@@ -19,8 +19,8 @@ const corsOptions = {
 }
 
 //Routers:
-const authRouter = require("./routers/authRouter.js");
-const imageRouter = require("./routers/imageRouter.js");
+import authRouter from './routers/authRouter.js';
+import imageRouter from './routers/imageRouter.js';
 
 const app = express();
 dotenv.config();//To be able to use the .env fil

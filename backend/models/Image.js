@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const ImageSchema = new mongoose.Schema({
     username: {
         required: true,
@@ -17,4 +17,4 @@ const ImageSchema = new mongoose.Schema({
 
 const Image = mongoose.model("Image", ImageSchema);
 
-module.exports = Image;
+export default Image;
