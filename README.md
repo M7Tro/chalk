@@ -604,3 +604,7 @@ So there are a few things I must udnerstand: do I need to convert base64 into so
 I am going to install the "form-data" package for multipart/form-data streams.
 
 It seems that to work with 'form-data' I must use the ES6 modules and rewrite every require to an import.
+
+For some reason, I can't make it work. I can't make a successful request using the image from the frontend.
+
+What I am going to do right now is to make something simpler. I will let the user send a promp to the API and the image automatically loads onto the canvas. And then you can do various operations with it. 

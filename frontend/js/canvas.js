@@ -1,3 +1,5 @@
+const loadAI = document.querySelector(".loadAI");
+
 const saveButton = document.querySelector(".save");
 const color = document.querySelector('.color');
 const lineWidth = document.querySelector('.lineWidth');
@@ -127,9 +129,26 @@ sendButton.addEventListener("click", async (e) => {
             body: JSON.stringify({canvasImage: canvas.toDataURL(), prompt: promptField.value})
         })
         const json = await res.json();
-        
         console.log("Json from server:", json);
     }catch(err){
 
     }
 }) 
+
+//Loading an image from API. I will delete later:
+loadAI.addEventListener("click", () => {
+    console.log("Button pressed");
+    const canvasImage = new Image();
+    canvasImage.src = 'https://ai-studio-assets.limewire.media/u/dedd26d6-845d-437a-9f2a-59ec63e0e228/image/ce842bf6-69c3-451f-9618-98a9e7e9bfe6?Expires=1730129415&Signature=Obw3I~P7l~Re4w9pDFNJVlbwAJk2U-rmbHSenaanIhbkFhH5zDGc9QLS5EBeA4QlSc-dtQ9nXBwXzEA~7cNC8NyaqtdpIs2gQ5I0gRSZPmwsC-L7nACkG0lmVRekCdWLmHzC6XfujS0cTmUsVf1kmGJd2k6sODPP90dZEFThRiY8aZuCAeQqBhHq5B30ecL18Q3vRoDyhUxHmPzX6h3jhg7~Zn2CJC0Ju9A39zeTeYOclGqvZL~ZRcOguKm2HIHMF8-JwLY0QKdGjekTrDam-ecY-yxEaCS653h6W82Iq9KZ6uzdmm89abgVY8x3ec9JzEBucsfL4jw-GDkPYgjchQ__&Key-Pair-Id=K1U52DHN9E92VT';
+    canvasImage.onload = () => {
+        context.drawImage(canvasImage, 0, 0);   
+    }
+})
+
+/*
+self: 'https://api.limewire.com/api/assets/c3ea7553-3d28-4ef5-a228-453ec4759272',
+asset_url: 'https://ai-studio-assets.limewire.media/u/dedd26d6-845d-437a-9f2a-59ec63e0e228/image/ce842bf6-69c3-451f-9618-98a9e7e9bfe6?Expires=1730129415&Signature=Obw3I~P7l~Re4w9pDFNJVlbwAJk2U-rmbHSenaanIhbkFhH5zDGc9QLS5EBeA4QlSc-dtQ9nXBwXzEA~7cNC8NyaqtdpIs2gQ5I0gRSZPmwsC-L7nACkG0lmVRekCdWLmHzC6XfujS0cTmUsVf1kmGJd2k6sODPP90dZEFThRiY8aZuCAeQqBhHq5B30ecL18Q3vRoDyhUxHmPzX6h3jhg7~Zn2CJC0Ju9A39zeTeYOclGqvZL~ZRcOguKm2HIHMF8-JwLY0QKdGjekTrDam-ecY-yxEaCS653h6W82Iq9KZ6uzdmm89abgVY8x3ec9JzEBucsfL4jw-GDkPYgjchQ__&Key-Pair-Id=K1U52DHN9E92VT',
+type: 'image/png',
+width: 1024,
+height: 1024
+*/
