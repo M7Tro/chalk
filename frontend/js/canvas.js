@@ -129,7 +129,8 @@ sendButton.addEventListener("click", async (e) => {
             body: JSON.stringify({canvasImage: canvas.toDataURL(), prompt: promptField.value})
         })
         const json = await res.json();
-        console.log("Json from server:", json);
+        console.log("Json from server on send:", json);
+        sessionStorage.setItem("generatedImage", json);
     }catch(err){
 
     }
@@ -137,9 +138,9 @@ sendButton.addEventListener("click", async (e) => {
 
 //Loading an image from API. I will delete later:
 loadAI.addEventListener("click", () => {
-    console.log("Button pressed");
+    console.log("Load button pressed");
     const canvasImage = new Image();
-    canvasImage.src = 'https://ai-studio-assets.limewire.media/u/dedd26d6-845d-437a-9f2a-59ec63e0e228/image/ce842bf6-69c3-451f-9618-98a9e7e9bfe6?Expires=1730129415&Signature=Obw3I~P7l~Re4w9pDFNJVlbwAJk2U-rmbHSenaanIhbkFhH5zDGc9QLS5EBeA4QlSc-dtQ9nXBwXzEA~7cNC8NyaqtdpIs2gQ5I0gRSZPmwsC-L7nACkG0lmVRekCdWLmHzC6XfujS0cTmUsVf1kmGJd2k6sODPP90dZEFThRiY8aZuCAeQqBhHq5B30ecL18Q3vRoDyhUxHmPzX6h3jhg7~Zn2CJC0Ju9A39zeTeYOclGqvZL~ZRcOguKm2HIHMF8-JwLY0QKdGjekTrDam-ecY-yxEaCS653h6W82Iq9KZ6uzdmm89abgVY8x3ec9JzEBucsfL4jw-GDkPYgjchQ__&Key-Pair-Id=K1U52DHN9E92VT';
+    canvasImage.src = sessionStorage.getItem("generatedImage");
     canvasImage.onload = () => {
         context.drawImage(canvasImage, 0, 0);   
     }

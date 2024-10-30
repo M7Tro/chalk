@@ -608,3 +608,6 @@ It seems that to work with 'form-data' I must use the ES6 modules and rewrite ev
 For some reason, I can't make it work. I can't make a successful request using the image from the frontend.
 
 What I am going to do right now is to make something simpler. I will let the user send a promp to the API and the image automatically loads onto the canvas. And then you can do various operations with it. 
+
+
+There is a security error because I am insterting the image on canvas from the url send by API. Now I am trying to send the image from backend instead of a URL. But I am having problems. I do not understand the output I am getting from the API.

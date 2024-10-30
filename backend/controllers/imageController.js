@@ -64,16 +64,29 @@ const generateImage = async (req, res) => {
                 body: form
             }
             );
-        
-            const json = await resp.json();
-            console.log(json); 
+            console.log("response:", response);
+            const {data} = await resp.json();
+            console.log("data:", data);
+            const imageURL = data[0].asset_url;
+            console.log("imageURL:", imageURL);
+            const imageResponse = await fetch(imageURL);
+            console.log("imageResponse:", imageResponse);
+            const imageBuffer = await imageResponse.arrayBuffer();
+            console.log("imageBuffer:", imageBuffer);
+            res.status(200).json({image: imageBuffer});
         }catch(err){
-
+            console.log("Error while getting image from API:", err.message);
         }
-
-        
-
 }
+
+
+fetch('https://ai-studio-assets.limewire.media/u/dedd26d6-845d-437a-9f2a-59ec63e0e228/image/b2368a28-b502-4e7f-9169-78ff8c11b9be?Expires=1730217337&Signature=A6oGE7-8EZepiNeZSOHxJs2vSYCbmwImsRbtHyrc17dXZPPZtIl1IDSfJ9A0Yh2JmGONv3k-xqHGXIUb6OCLwbe7HqtpyfoU7yCDh~fkHHz06hS1igoEgO3F8LW5opuQhFVr9emfcX6vO6BAkQkVJWqNQuYZL31RvmAGKc-8AM5nA6UadKTelWsGTZ7xN7gdHvVbgxNEwza2bdZ1EHwjvaPIVd5MXwjhvepg9egjPXgPfdt2wovvI92kQ4YPJV2yy~Lv1XQhqUTgzb8WaPygX0tAskyfORde2~Q6TLPzt~V5tgrKxcnNOrSF7covq9Q5Sb4CJGmcjjsFg8jEPMS5DQ__&Key-Pair-Id=K1U52DHN9E92VT')
+    .then((response) => console.log(response))
+
+
+
+
+    
 
 const imageController = {
     saveImage,
